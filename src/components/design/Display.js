@@ -1,8 +1,8 @@
-import React from "react"
-import "./Display.css"
+import React from "react";
+import "./Display.css";
 
 const Display = ({ display }) => {
-  console.log(display)
+  console.log(display);
   return (
     <div className="card card-content">
       <div className="imgTshirt text-center">
@@ -18,13 +18,16 @@ const Display = ({ display }) => {
         <div className="upperText">
           <p>{display.upperText}</p>
         </div>
-        <img src="http://via.placeholder.com/400x300" alt="memes-text" />
+        <img
+          src={`${display.url}` || `http://via.placeholder.com/400x300`}
+          alt="memes-text"
+        />
         <div className="lowerText">
           <p>{display.lowerText}</p>
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default Display
+export default Display;

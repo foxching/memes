@@ -1,15 +1,16 @@
-import React from "react"
-import "./Display.css"
+import React from "react";
+import "./Display.css";
 
 const baseUrl =
-  "https://res.cloudinary.com/dkkgmzpqd/image/upload/v1545217305/T-shirt%20Images/"
+  "https://res.cloudinary.com/dkkgmzpqd/image/upload/v1545217305/T-shirt%20Images/";
 
 const Settings = props => {
   const {
     tshirtColorChange,
     handleChangeText,
+    handleImageUpload,
     display: { upperText, lowerText }
-  } = props
+  } = props;
   return (
     <div className="container bg-light card">
       <h3 className="text-center">Settings</h3>
@@ -68,6 +69,7 @@ const Settings = props => {
       <h4>Upload Image</h4>
       <input
         type="file"
+        onChange={handleImageUpload}
         className="form-control-file"
         id="exampleFormControlFile1"
       />
@@ -85,7 +87,7 @@ const Settings = props => {
       <hr />
       <button className="btn btn-primary btn-sm mb-2">Save</button>
     </div>
-  )
-}
+  );
+};
 
-export default Settings
+export default Settings;
