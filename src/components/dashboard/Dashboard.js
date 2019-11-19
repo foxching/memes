@@ -8,7 +8,9 @@ class Dashboard extends React.Component {
     upperText: "this is upperText",
     lowerText: "this is lowerText",
     image: "",
-    url: ""
+    url: "",
+    textSize: 44,
+    textColor: "white"
   };
 
   tshirtColorChange = e => {
@@ -43,19 +45,33 @@ class Dashboard extends React.Component {
       );
     }
   };
+
+  handleTextSize = e => {
+    this.setState({ textSize: e.target.value });
+  };
+
+  formatTextSize = () => {
+    const size = this.state.textSize;
+    return parseInt(size);
+  };
+
+  handleTextColor = e => {
+    this.setState({ textColor: e.target.value });
+  };
   render() {
     return (
       <div className="container py-4">
         <div className="row">
           <div className="col-lg-8">
-            <Display display={this.state} />
+            <Display display={this.state} formatSize={this.formatTextSize()} />
           </div>
           <div className="col-lg-4">
             <Setting
-              display={this.state}
               handleChangeText={this.handleChangeText}
               tshirtColorChange={this.tshirtColorChange}
               handleImageUpload={this.handleImageUpload}
+              handleTextSize={this.handleTextSize}
+              handleTextColor={this.handleTextColor}
             />
           </div>
         </div>

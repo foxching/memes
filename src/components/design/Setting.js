@@ -9,7 +9,8 @@ const Settings = props => {
     tshirtColorChange,
     handleChangeText,
     handleImageUpload,
-    display: { upperText, lowerText }
+    handleTextColor,
+    handleTextSize
   } = props;
   return (
     <div className="container bg-light card">
@@ -52,7 +53,6 @@ const Settings = props => {
       <input
         type="text"
         name="upperText"
-        value={upperText}
         className="form-control form-control sm mb-2"
         placeholder="Upper Text"
         onChange={handleChangeText}
@@ -60,7 +60,6 @@ const Settings = props => {
       <input
         type="text"
         name="lowerText"
-        value={lowerText}
         className="form-control form-control sm mb-2"
         placeholder="Lower Text"
         onChange={handleChangeText}
@@ -75,10 +74,17 @@ const Settings = props => {
       />
       <hr />
       <h4>Text Size</h4>
-      <input type="range" className="custom-range" min="0" max="5" />
+      <input
+        onChange={handleTextSize}
+        type="range"
+        className="custom-range"
+        //value={textSize}
+        min="24"
+        max="44"
+      />
       <hr />
       <h4>Text Color</h4>
-      <select className="custom-select">
+      <select onChange={handleTextColor} className="custom-select">
         <option>White</option>
         <option>Black</option>
         <option>Blue</option>
