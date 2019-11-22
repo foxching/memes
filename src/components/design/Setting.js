@@ -10,7 +10,8 @@ const Settings = props => {
     handleChangeText,
     handleImageUpload,
     handleTextColor,
-    handleTextSize
+    handleTextSize,
+    handleSaveDesign
   } = props;
   return (
     <div className="container bg-light card">
@@ -91,7 +92,13 @@ const Settings = props => {
         <option>Red</option>
       </select>
       <hr />
-      <button className="btn btn-primary btn-sm mb-2">Save</button>
+      <button
+        onClick={handleSaveDesign}
+        className="btn btn-primary btn-sm mb-2"
+        id="save"
+      >
+        Save
+      </button>
     </div>
   );
 };

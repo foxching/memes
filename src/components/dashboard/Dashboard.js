@@ -1,7 +1,10 @@
 import React from "react";
+import { connect } from "react-redux";
+import { saveDesign } from "../../store/actions/designAction";
 import Display from "../design/Display";
 import Setting from "../design/Setting";
 import storage from "../../config/firebase";
+
 class Dashboard extends React.Component {
   state = {
     tshirtColor: "black",
@@ -58,6 +61,12 @@ class Dashboard extends React.Component {
   handleTextColor = e => {
     this.setState({ textColor: e.target.value });
   };
+
+  handleSaveDesign = e => {
+    if (e.target.id === "save") {
+      this.props.saveDesign(this.state);
+    }
+  };
   render() {
     return (
       <div className="container py-4">
@@ -72,6 +81,7 @@ class Dashboard extends React.Component {
               handleImageUpload={this.handleImageUpload}
               handleTextSize={this.handleTextSize}
               handleTextColor={this.handleTextColor}
+              handleSaveDesign={this.handleSaveDesign}
             />
           </div>
         </div>
@@ -79,5 +89,10 @@ class Dashboard extends React.Component {
     );
   }
 }
-
-export default Dashboard;
+const mapDispatch = {
+  saveDesign
+};
+export default connect(
+  null,
+  mapDispatch
+)(Dashboard);

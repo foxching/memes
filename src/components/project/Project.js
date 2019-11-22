@@ -1,11 +1,12 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import ProjectLists from "./ProjectLists";
+//import Display2 from "../design/Display2";
 
 class Project extends Component {
   render() {
     const { designs } = this.props;
-    console.log(this.props);
+
     return (
       <div className="container mb-5">
         <div className="row">
@@ -13,6 +14,7 @@ class Project extends Component {
             {designs &&
               designs.map(design => (
                 <ProjectLists key={design.id} design={design} />
+                //<Display2 design={design} />
               ))}
           </div>
         </div>

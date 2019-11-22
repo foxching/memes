@@ -2,7 +2,6 @@ import React from "react";
 import "./Display.css";
 
 const Display = ({ display, formatSize }) => {
-  console.log(display.textColor);
   return (
     <div className="card card-content">
       <div className="imgTshirt text-center">
