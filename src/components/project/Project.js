@@ -10,12 +10,14 @@ class Project extends Component {
     return (
       <div className="container mb-5">
         <div className="row">
-          <div className="project-list">
-            {designs &&
-              designs.map(design => (
-                <ProjectLists key={design.id} design={design} />
-                //<Display2 design={design} />
-              ))}
+          <div className="col-lg-8">
+            <div className="project-list">
+              {designs &&
+                designs.map(design => (
+                  <ProjectLists key={design.id} design={design} />
+                  //<Display2 design={design} />
+                ))}
+            </div>
           </div>
         </div>
       </div>

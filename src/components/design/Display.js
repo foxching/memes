@@ -9,7 +9,7 @@ const Display = ({ display, formatSize }) => {
           src={`https://res.cloudinary.com/dkkgmzpqd/image/upload/v1545217305/T-shirt%20Images/${
             display.tshirtColor
           }`}
-          className="img-responsive"
+          className="img-responsive max-width: 80%"
           alt="img-tshirt"
         />
       </div>

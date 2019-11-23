@@ -1,0 +1,21 @@
+.imgThubnail {
+  position: relative;
+}
+
+.memesThumbnail {
+  position: absolute;
+  top: 20%;
+  left: 36%;
+}
+
+.memesThumbnail img {
+  max-width: 50px;
+  border: #fff solid 1px;
+  padding: 0;
+}
+
+.memesThumbnail p {
+  font-family: Impact, Charcoal, "sans-serif";
+  color: #fff;
+  padding: 0;
+}
