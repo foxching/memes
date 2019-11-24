@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import { saveDesign } from "../../store/actions/designAction";
 import Display from "../design/Display";
 import Setting from "../design/Setting";
+import Project from "../project/Project";
 import storage from "../../config/firebase";
 
 class Dashboard extends React.Component {
@@ -84,6 +85,7 @@ class Dashboard extends React.Component {
               handleSaveDesign={this.handleSaveDesign}
             />
           </div>
+          <Project />
         </div>
       </div>
     );

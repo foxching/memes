@@ -1,8 +1,9 @@
 import React from "react";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Dashboard from "./components/dashboard/Dashboard";
 import Navbar from "./components/navigation/Navbar";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import Project from "./components/project/Project";
+import Register from "./components/auth/Register";
+
 import "./styles.css";
 
 const App = () => {
@@ -10,8 +11,10 @@ const App = () => {
     <Router>
       <div>
         <Navbar />
-        <Dashboard />
-        <Project />
+        <Switch>
+          <Route path="/" component={Dashboard} exact />
+          <Route path="/register" component={Register} />
+        </Switch>
       </div>
     </Router>
   );

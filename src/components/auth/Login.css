@@ -1,0 +1,56 @@
+h1 {
+  font-size: 40px;
+  margin-top: 80px;
+}
+
+p {
+  font-size: 18px;
+}
+
+h3 {
+  font-size: 25px;
+}
+.col-md-5 {
+  margin-top: 80px;
+  box-shadow: -1px 1px 60px 10px white;
+  background: rgba(0, 0, 0, 0);
+}
+
+.label {
+  font-weight: bold;
+  margin-top: 15px;
+  color: black;
+  font-size: 15px;
+}
+.formInput {
+  font-size: 18px;
+  margin-top: 15px;
+  height: 40px;
+}
+
+input[type="checkbox"] {
+  margin-top: 15px;
+  width: 15px;
+  height: 15px;
+}
+input[type="radio"] {
+  margin-top: 22px;
+}
+small {
+  font-size: 16px;
+}
+
+.btn-info {
+  margin-top: 20px;
+  font-size: 18px;
+  width: 120px;
+  margin-left: 80px;
+  margin-bottom: 20px;
+}
+.btn-warning {
+  margin-top: 20px;
+  font-size: 18px;
+  width: 120px;
+  margin-left: 10px;
+  margin-bottom: 20px;
+}

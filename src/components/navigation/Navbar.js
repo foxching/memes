@@ -7,7 +7,7 @@ class Navbar extends Component {
       <div className="navbar navbar-expand-lg navbar-light bg-primary">
         <div className="container">
           <Link to="/" className="navbar-brand text-white">
-            MEMES T-SHIRT
+            MEME'S SHIRT
           </Link>
           <button
             type="button"
@@ -18,7 +18,7 @@ class Navbar extends Component {
           <div className="collapse navbar-collapse" id="navbarComponent">
             <ul className="navbar-nav ml-auto">
               <li className="nav-item">
-                <Link to="/" className="nav-link">
+                <Link to="/register" className="nav-link">
                   SIGN UP
                 </Link>
               </li>
