@@ -1,15 +1,15 @@
-.imgThubnail {
+.imgThumbnail {
   position: relative;
 }
 
 .memesThumbnail {
   position: absolute;
   top: 20%;
-  left: 36%;
+  left: 28.9%;
 }
 
 .memesThumbnail img {
-  max-width: 50px;
+  max-width: 60px;
   border: #fff solid 1px;
   padding: 0;
 }
@@ -17,5 +17,13 @@
 .memesThumbnail p {
   font-family: Impact, Charcoal, "sans-serif";
   color: #fff;
-  padding: 0;
+}
+
+.upperTextThumbnail p {
+  margin-left: 15px;
+  margin-bottom: 10px;
+}
+.lowerTextThumbnail p {
+  margin-left: 15px;
+  margin-top: 10px;
 }

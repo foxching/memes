@@ -1,6 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import { saveDesign } from "../../store/actions/designAction";
+import Navbar from "../navigation/Navbar";
 import Display from "../design/Display";
 import Setting from "../design/Setting";
 import Project from "../project/Project";
@@ -70,22 +71,28 @@ class Dashboard extends React.Component {
   };
   render() {
     return (
-      <div className="container py-4">
-        <div className="row">
-          <div className="col-lg-8">
-            <Display display={this.state} formatSize={this.formatTextSize()} />
+      <div>
+        <Navbar />
+        <div className="container py-4">
+          <div className="row">
+            <div className="col-lg-8">
+              <Display
+                display={this.state}
+                formatSize={this.formatTextSize()}
+              />
+            </div>
+            <div className="col-lg-4">
+              <Setting
+                handleChangeText={this.handleChangeText}
+                tshirtColorChange={this.tshirtColorChange}
+                handleImageUpload={this.handleImageUpload}
+                handleTextSize={this.handleTextSize}
+                handleTextColor={this.handleTextColor}
+                handleSaveDesign={this.handleSaveDesign}
+              />
+            </div>
+            <Project />
           </div>
-          <div className="col-lg-4">
-            <Setting
-              handleChangeText={this.handleChangeText}
-              tshirtColorChange={this.tshirtColorChange}
-              handleImageUpload={this.handleImageUpload}
-              handleTextSize={this.handleTextSize}
-              handleTextColor={this.handleTextColor}
-              handleSaveDesign={this.handleSaveDesign}
-            />
-          </div>
-          <Project />
         </div>
       </div>
     );

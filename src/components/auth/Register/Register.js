@@ -1,20 +1,45 @@
 import React from "react";
-import "./Login.css";
-import { faPencilAlt } from "@fortawesome/free-solid-svg-icons";
+import { Link } from "react-router-dom";
+import {
+  faPencilAlt,
+  faPalette,
+  faUpload,
+  faShare
+} from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import "./Register.css";
+
 const Register = () => {
   return (
-    <div className="container">
-      <div className="row">
-        <div className="col-md-7">
-          <h1 className="text-left">Register Here</h1>
-          <p>
-            Memes-Shirt is a web app that enables you to build your favorite
-            design t-shirt memes .you can make your cuztomise t-shirt design and
-            saved it. To enable saving you must provide your credentials first
-          </p>
-        </div>
-        <div className="col-md-5 bg-light py-4">
+    <section className="container">
+      <section className="row ">
+        <section className="col-md-7 ">
+          <h1 className="text-left">MEMES-SHIRT</h1>
+          <br />
+          <FontAwesomeIcon
+            icon={faPalette}
+            style={{ fontSize: "30px", float: "left", marginTop: "3px" }}
+          />
+          {""}
+          <p>Create your favorite shirt design</p>
+          <br />
+          <br />
+          <FontAwesomeIcon
+            icon={faUpload}
+            style={{ fontSize: "30px", float: "left", marginTop: "3px" }}
+          />
+          {""}
+          <p>Save in our System</p>
+          <br />
+          <br />
+          <FontAwesomeIcon
+            icon={faShare}
+            style={{ fontSize: "30px", float: "left", marginTop: "3px" }}
+          />
+          {""}
+          <p>Share with others</p>
+        </section>
+        <section className="col-md-5 formContainer">
           <div className="row">
             <div className="col-md-6">
               <h3 className="text-left">Registration Form</h3>
@@ -22,7 +47,7 @@ const Register = () => {
             <div className="col-md-6">
               <FontAwesomeIcon
                 icon={faPencilAlt}
-                style={{ fontSize: "35px", float: "right", marginTop: "5px" }}
+                style={{ fontSize: "30px", float: "right", marginTop: "3px" }}
               />
             </div>
           </div>
@@ -75,9 +100,12 @@ const Register = () => {
           <a href="ching.html">
             <div className="btn btn-warning">Cancel</div>
           </a>
-        </div>
-      </div>
-    </div>
+          <h5>
+            Already have an account?<Link to="/login">Login</Link>
+          </h5>
+        </section>
+      </section>
+    </section>
   );
 };
 

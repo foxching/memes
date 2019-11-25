@@ -5,7 +5,7 @@ const ProjectLists = ({ design }) => {
   return (
     <div className="item text-center">
       <div className="card card-body">
-        <div className="imgThubnail">
+        <div className="imgThumbnail">
           <img
             className="img-fluid"
             src={`https://res.cloudinary.com/dkkgmzpqd/image/upload/v1545217305/T-shirt%20Images/${
@@ -15,7 +15,7 @@ const ProjectLists = ({ design }) => {
           />
         </div>
         <div className="memesThumbnail ">
-          <div className="upperText">
+          <div className="upperTextThumbnail">
             <p style={{ fontSize: "9px", color: design.textColor }}>
               {design.upperText}
             </p>
@@ -24,7 +24,7 @@ const ProjectLists = ({ design }) => {
             src={`${design.url}` || `http://via.placeholder.com/400x300`}
             alt="memes-text"
           />
-          <div className="lowerText">
+          <div className="lowerTextThumbnail">
             <p style={{ fontSize: "9px", color: design.textColor }}>
               {design.lowerText}
             </p>

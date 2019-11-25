@@ -1,13 +1,11 @@
 .imgTShirt {
   position: relative;
 }
-.imgTShirt img {
-  max-width: 200px;
-}
+
 .memesText {
   position: absolute;
   top: 190px;
-  left: 210px;
+  left: 180px;
 }
 
 .memesText img {
