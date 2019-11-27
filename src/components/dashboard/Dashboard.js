@@ -1,11 +1,11 @@
-import React from "react";
-import { connect } from "react-redux";
-import { saveDesign } from "../../store/actions/designAction";
-import Navbar from "../navigation/Navbar";
-import Display from "../design/Display";
-import Setting from "../design/Setting";
-import Project from "../project/Project";
-import storage from "../../config/firebase";
+import React from "react"
+import { connect } from "react-redux"
+import { saveDesign } from "../../store/actions/designAction"
+import Navbar from "../navigation/Navbar"
+import Display from "../design/Display"
+import Setting from "../design/Setting"
+import Project from "../project/Project"
+import { storage } from "../../config/firebase"
 
 class Dashboard extends React.Component {
   state = {
@@ -16,27 +16,27 @@ class Dashboard extends React.Component {
     url: "",
     textSize: 44,
     textColor: "white"
-  };
+  }
 
   tshirtColorChange = e => {
-    this.setState({ tshirtColor: e.target.id });
-  };
+    this.setState({ tshirtColor: e.target.id })
+  }
 
   handleChangeText = e => {
-    this.setState({ [e.target.name]: e.target.value });
-  };
+    this.setState({ [e.target.name]: e.target.value })
+  }
 
   handleImageUpload = e => {
     if (e.target.files[0]) {
-      const image = e.target.files[0];
-      const uploadTask = storage.ref(`images/${image.name}`).put(image);
+      const image = e.target.files[0]
+      const uploadTask = storage.ref(`images/${image.name}`).put(image)
       uploadTask.on(
         "state_changed",
         snapshot => {
-          console.log(snapshot);
+          console.log(snapshot)
         },
         error => {
-          console.log(error);
+          console.log(error)
         },
         () => {
           storage
@@ -44,31 +44,31 @@ class Dashboard extends React.Component {
             .child(image.name)
             .getDownloadURL()
             .then(url => {
-              this.setState({ url });
-            });
+              this.setState({ url })
+            })
         }
-      );
+      )
     }
-  };
+  }
 
   handleTextSize = e => {
-    this.setState({ textSize: e.target.value });
-  };
+    this.setState({ textSize: e.target.value })
+  }
 
   formatTextSize = () => {
-    const size = this.state.textSize;
-    return parseInt(size);
-  };
+    const size = this.state.textSize
+    return parseInt(size)
+  }
 
   handleTextColor = e => {
-    this.setState({ textColor: e.target.value });
-  };
+    this.setState({ textColor: e.target.value })
+  }
 
   handleSaveDesign = e => {
     if (e.target.id === "save") {
-      this.props.saveDesign(this.state);
+      this.props.saveDesign(this.state)
     }
-  };
+  }
   render() {
     return (
       <div>
@@ -95,13 +95,13 @@ class Dashboard extends React.Component {
           </div>
         </div>
       </div>
-    );
+    )
   }
 }
 const mapDispatch = {
   saveDesign
-};
+}
 export default connect(
   null,
   mapDispatch
-)(Dashboard);
+)(Dashboard)
