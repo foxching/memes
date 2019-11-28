@@ -19,11 +19,11 @@ class Register extends Component {
     gender: ""
   };
 
-  handleSave = e => {
+  handleSave = (async = e => {
     e.preventDefault();
-    this.props.signUp(this.state)
-    console.log(this.state);
-  };
+    this.props.signUp(this.state);
+    this.props.history.push("/");
+  });
 
   onChangeHandle = e => {
     this.setState({ [e.target.name]: e.target.value });

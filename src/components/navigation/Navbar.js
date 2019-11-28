@@ -1,8 +1,10 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 
 class Navbar extends Component {
   render() {
+    const { isAuthenticated } = this.props;
     return (
       <div className="navbar navbar-expand-lg navbar-light bg-primary">
         <div className="container">
@@ -14,19 +16,45 @@ class Navbar extends Component {
             className="navbar-toggler"
             data-toggle="collapse"
             data-target="#navbarComponent"
-          />
+          >
+            <span class="navbar-toggler-icon" />
+          </button>
           <div className="collapse navbar-collapse" id="navbarComponent">
             <ul className="navbar-nav ml-auto">
-              <li className="nav-item">
-                <Link to="/register" className="nav-link">
-                  SIGN UP
-                </Link>
-              </li>
-              <li className="nav-item">
-                <Link to="/login" className="nav-link">
-                  LOGIN
-                </Link>
-              </li>
+              {!isAuthenticated ? (
+                <React.Fragment>
+                  <li className="nav-item">
+                    <Link to="/register" className="nav-link">
+                      <i className="fa fa-user fa-lg"> Sign Up</i>
+                    </Link>
+                  </li>
+                  <li className="nav-item">
+                    <Link to="/login" className="nav-link">
+                      <i className="fa fa-sign-in fa-lg"> Login</i>{" "}
+                    </Link>
+                  </li>
+                </React.Fragment>
+              ) : (
+                <li className="nav-item dropdown">
+                  <Link
+                    to="/login"
+                    className="nav-link dropdown-toggle"
+                    href="#"
+                    id="navbardrop"
+                    data-toggle="dropdown"
+                  >
+                    <i className="fa fa-smile fa-lg">Ching</i>
+                  </Link>
+                  <div class="dropdown-menu">
+                    <Link className="dropdown-item" href="#">
+                      Settings
+                    </Link>
+                    <Link className="dropdown-item" href="#">
+                      Logout
+                    </Link>
+                  </div>
+                </li>
+              )}
             </ul>
           </div>
         </div>
@@ -34,5 +62,8 @@ class Navbar extends Component {
     );
   }
 }
+const mapStateToProps = state => ({
+  isAuthenticated: !!state.firebase.auth.uid
+});
 
-export default Navbar;
+export default connect(mapStateToProps)(Navbar);

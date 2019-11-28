@@ -4,7 +4,7 @@
 
 .memesText {
   position: absolute;
-  top: 190px;
+  top: 180px;
   left: 210px;
 }
 
@@ -16,6 +16,7 @@
 .memesText p {
   font-family: Impact, Charcoal, "sans-serif";
   color: #fff;
+  margin-left: 5px;
 }
 
 .lowerText p {
