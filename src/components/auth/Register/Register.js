@@ -31,6 +31,7 @@ class Register extends Component {
   };
 
   render() {
+    const { authError } = this.props;
     return (
       <section className="container">
         <section className="row ">
@@ -131,9 +132,12 @@ class Register extends Component {
               <button type="submit" className="btn btn-warning ">
                 Cancel
               </button>
-              <h5>
-                Already have an account?<Link to="/login">Login</Link>
-              </h5>
+
+              <div className="container  text-center">
+                {authError ? (
+                  <small className="text-danger">{authError}</small>
+                ) : null}
+              </div>
             </form>
           </section>
         </section>
@@ -141,10 +145,14 @@ class Register extends Component {
     );
   }
 }
+
+const mapStateToProps = state => ({
+  authError: state.auth.authError
+});
 const actions = {
   signUp
 };
 export default connect(
-  null,
+  mapStateToProps,
   actions
 )(Register);

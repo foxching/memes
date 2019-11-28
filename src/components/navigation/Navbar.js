@@ -18,7 +18,7 @@ class Navbar extends Component {
             data-toggle="collapse"
             data-target="#navbarComponent"
           >
-            <span class="navbar-toggler-icon" />
+            <span className="navbar-toggler-icon" />
           </button>
           <div className="collapse navbar-collapse" id="navbarComponent">
             <ul className="navbar-nav ml-auto">
