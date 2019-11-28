@@ -18,10 +18,12 @@ class Register extends Component {
     message: ""
   };
 
-  handleSave = e => {
+  handleSubmit = async e => {
     e.preventDefault();
-    this.props.signUp(this.state);
-    this.props.history.push("/");
+    let login = await this.props.signUp(this.state);
+    if (login) {
+      this.props.history.push("/");
+    }
   };
 
   onChangeHandle = e => {
@@ -71,7 +73,7 @@ class Register extends Component {
               </div>
             </div>
             <hr />
-            <form onSubmit={this.handleSave}>
+            <form onSubmit={this.handleSubmit}>
               <div className="form-group">
                 <div className="row">
                   <label className="label col-md-2 control-label">Email</label>

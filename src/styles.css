@@ -3,12 +3,6 @@ body {
   background: #eaeded;
 }
 
-i {
-  color: white;
-}
-i:hover {
-  color: #eaeded;
-}
 .project-list {
   display: flex;
   flex-direction: row;
@@ -19,11 +13,4 @@ i:hover {
 .project-list .item {
   width: 30%;
   height: 30%;
-}
-
-.btn-circle {
-  background-color: greenyellow;
-  height: 35px;
-  width: 35px;
-  border-radius: 50%;
 }

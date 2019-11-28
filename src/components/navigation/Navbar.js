@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
+import { signOut } from "../../store/actions/authAction";
 
 class Navbar extends Component {
   render() {
@@ -25,12 +26,24 @@ class Navbar extends Component {
                 <React.Fragment>
                   <li className="nav-item">
                     <Link to="/register" className="nav-link">
-                      <i className="fa fa-user fa-lg"> Sign Up</i>
+                      <i
+                        className="fa fa-user fa-lg"
+                        style={{ fontSize: "18px", color: "white" }}
+                      >
+                        {" "}
+                        Sign Up
+                      </i>
                     </Link>
                   </li>
                   <li className="nav-item">
                     <Link to="/login" className="nav-link">
-                      <i className="fa fa-sign-in fa-lg"> Login</i>{" "}
+                      <i
+                        className="fa fa-sign-in fa-lg"
+                        style={{ fontSize: "18px", color: "white" }}
+                      >
+                        {" "}
+                        Login
+                      </i>{" "}
                     </Link>
                   </li>
                 </React.Fragment>
@@ -49,7 +62,11 @@ class Navbar extends Component {
                     <Link className="dropdown-item" href="#">
                       Settings
                     </Link>
-                    <Link className="dropdown-item" href="#">
+                    <Link
+                      className="dropdown-item"
+                      to="/login"
+                      onClick={this.props.signOut}
+                    >
                       Logout
                     </Link>
                   </div>
@@ -66,4 +83,11 @@ const mapStateToProps = state => ({
   isAuthenticated: !!state.firebase.auth.uid
 });
 
-export default connect(mapStateToProps)(Navbar);
+const mapDispatch = {
+  signOut
+};
+
+export default connect(
+  mapStateToProps,
+  mapDispatch
+)(Navbar);
