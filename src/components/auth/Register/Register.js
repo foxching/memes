@@ -15,15 +15,14 @@ class Register extends Component {
   state = {
     email: "",
     password: "",
-    message: "",
-    gender: ""
+    message: ""
   };
 
-  handleSave = (async = e => {
+  handleSave = e => {
     e.preventDefault();
     this.props.signUp(this.state);
     this.props.history.push("/");
-  });
+  };
 
   onChangeHandle = e => {
     this.setState({ [e.target.name]: e.target.value });
@@ -121,17 +120,6 @@ class Register extends Component {
                       placeholder="Why you join this app?"
                       required
                     />
-                  </div>
-                </div>
-              </div>
-              <div className="form-group">
-                <div className="row">
-                  <label className="label col-md-2">Gender</label>
-                  <div className="col-md-10" onChange={this.onChangeHandle}>
-                    <input type="radio" value="male" name="gender" />
-                    <small>Male</small>
-                    <input type="radio" value="female" name="gender" />
-                    <small>Female</small>
                   </div>
                 </div>
               </div>
