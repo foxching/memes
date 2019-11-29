@@ -23,7 +23,14 @@ export const signUp = newUser => {
         dispatch({ type: "SIGNUP_SUCCESS" });
       })
       .catch(err => {
-        dispatch({ type: "SIGNUP_ERROR", err });
+        console.log(err.code);
+        let error;
+        if (err.code === "auth/weak-password") {
+          error = "Password must be at least 6 characters";
+        } else if (err.code === "auth/email-already-in-use") {
+          error = "Email is already in used";
+        }
+        dispatch({ type: "SIGNUP_ERROR", error });
       });
   };
 };
@@ -38,7 +45,14 @@ export const signIn = credentials => {
         dispatch({ type: "LOGIN_SUCCESS" });
       })
       .catch(err => {
-        dispatch({ type: "LOGIN_ERROR", err });
+        console.log(err.code);
+        let error;
+        if (err.code === "auth/user-not-found") {
+          error = "User no record";
+        } else if (err.code === "auth/wrong-password") {
+          error = "Invalid password";
+        }
+        dispatch({ type: "LOGIN_ERROR", error });
       });
   };
 };
