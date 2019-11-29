@@ -6,11 +6,17 @@ export const signUp = newUser => {
       .auth()
       .createUserWithEmailAndPassword(newUser.email, newUser.password)
       .then(res => {
+        const user = firebase.auth().currentUser;
+        //console.log(user);
+        user.updateProfile({
+          displayName: newUser.username
+        });
         return firestore
           .collection("users")
           .doc(res.user.uid)
           .set({
-            message: newUser.message
+            username: newUser.username,
+            createdAt: firestore.FieldValue.serverTimestamp()
           });
       })
       .then(() => {

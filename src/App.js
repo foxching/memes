@@ -15,8 +15,8 @@ const App = () => {
         <Navbar />
         <Switch>
           <PrivateRoute path="/" exact={true} component={Dashboard} />
-          <PublicRoute path="/register" exact={true} component={Register} />
-          <PublicRoute path="/login" exact={true} component={Login} />
+          <PublicRoute path="/register" component={Register} />
+          <PublicRoute path="/login" component={Login} />
         </Switch>
       </div>
     </Router>

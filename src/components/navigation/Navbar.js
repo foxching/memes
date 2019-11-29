@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import { signOut } from "../../store/actions/authAction";
 
 class Navbar extends Component {
@@ -9,9 +9,9 @@ class Navbar extends Component {
     return (
       <div className="navbar navbar-expand-lg navbar-light bg-primary">
         <div className="container">
-          <Link to="/" className="navbar-brand text-white">
+          <NavLink to="/" className="navbar-brand text-white">
             MEME'S SHIRT
-          </Link>
+          </NavLink>
           <button
             type="button"
             className="navbar-toggler"
@@ -25,50 +25,49 @@ class Navbar extends Component {
               {!isAuthenticated ? (
                 <React.Fragment>
                   <li className="nav-item">
-                    <Link to="/register" className="nav-link">
+                    <NavLink to="/register">
                       <i
-                        className="fa fa-user fa-lg"
+                        className="fa fa-user fa-lg nav-link"
                         style={{ fontSize: "18px", color: "white" }}
                       >
                         {" "}
                         Sign Up
                       </i>
-                    </Link>
+                    </NavLink>
                   </li>
                   <li className="nav-item">
-                    <Link to="/login" className="nav-link">
+                    <NavLink to="/login">
                       <i
-                        className="fa fa-sign-in fa-lg"
+                        className="fa fa-sign-in fa-lg nav-link"
                         style={{ fontSize: "18px", color: "white" }}
                       >
                         {" "}
                         Login
                       </i>{" "}
-                    </Link>
+                    </NavLink>
                   </li>
                 </React.Fragment>
               ) : (
                 <li className="nav-item dropdown">
-                  <Link
-                    to="/login"
-                    className="nav-link dropdown-toggle"
+                  <div
                     href="#"
+                    className="nav-link dropdown-toggle"
                     id="navbardrop"
                     data-toggle="dropdown"
                   >
                     <i className="fa fa-smile fa-lg">Ching</i>
-                  </Link>
-                  <div class="dropdown-menu">
-                    <Link className="dropdown-item" href="#">
+                  </div>
+                  <div className="dropdown-menu">
+                    <NavLink className="dropdown-item" to="/settings">
                       Settings
-                    </Link>
-                    <Link
+                    </NavLink>
+                    <NavLink
                       className="dropdown-item"
                       to="/login"
                       onClick={this.props.signOut}
                     >
                       Logout
-                    </Link>
+                    </NavLink>
                   </div>
                 </li>
               )}

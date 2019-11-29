@@ -15,7 +15,7 @@ class Register extends Component {
   state = {
     email: "",
     password: "",
-    message: ""
+    username: ""
   };
 
   handleSubmit = async e => {
@@ -112,15 +112,15 @@ class Register extends Component {
               <div className="form-group">
                 <div className="row">
                   <label className="label col-md-2 control-label">
-                    Message
+                    Username
                   </label>
                   <div className="col-md-10">
-                    <textarea
-                      name="message"
-                      value={this.state.message}
+                    <input
+                      name="username"
+                      value={this.state.username}
                       onChange={this.onChangeHandle}
                       className="form-control formInput"
-                      placeholder="Why you join this app?"
+                      placeholder="Username"
                       required
                     />
                   </div>
