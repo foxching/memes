@@ -3,3 +3,27 @@ export const saveDesign = design => {
     dispatch({ type: "SAVE_DESIGN", design });
   };
 };
+
+export const createDesign = design => {
+  return (dispatch, getState, { getFirebase, getFirestore }) => {
+    //async call to database
+    // const firebase = getFirebase();
+    const firestore = getFirestore();
+    const profile = getState().firebase.profile;
+    const authId = getState().firebase.auth.uid;
+    firestore
+      .collection("designs")
+      .add({
+        ...design,
+        authorName: profile.username,
+        authorId: authId,
+        createdAt: new Date()
+      })
+      .then(() => {
+        dispatch({ type: "CREATE_PROJECT", design });
+      })
+      .catch(err => {
+        dispatch({ type: "CREATE_ERROR" }, err);
+      });
+  };
+};

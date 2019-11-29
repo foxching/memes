@@ -1,10 +1,10 @@
 import React from "react";
 import { connect } from "react-redux";
-import { saveDesign } from "../../store/actions/designAction";
+import { saveDesign, createDesign } from "../../store/actions/designAction";
+import { storage } from "../../config/firebase";
 import Display from "../design/Display";
 import Setting from "../design/Setting";
 import Project from "../project/Project";
-import { storage } from "../../config/firebase";
 
 class Dashboard extends React.Component {
   state = {
@@ -65,7 +65,7 @@ class Dashboard extends React.Component {
 
   handleSaveDesign = e => {
     if (e.target.id === "save") {
-      this.props.saveDesign(this.state);
+      this.props.createDesign(this.state);
     }
   };
   render() {
@@ -97,7 +97,8 @@ class Dashboard extends React.Component {
   }
 }
 const mapDispatch = {
-  saveDesign
+  saveDesign,
+  createDesign
 };
 
 export default connect(

@@ -31,6 +31,12 @@ export const designReducer = (state = initialState, action) => {
   switch (action.type) {
     case "SAVE_DESIGN":
       return { ...state, designs: [...state.designs, action.design] };
+    case "CREATE_PROJECT":
+      console.log(action.design);
+      return state;
+    case "CREATE_ERROR":
+      console.log(action.err);
+      return state;
     default:
       return state;
   }
