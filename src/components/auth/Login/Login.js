@@ -43,6 +43,7 @@ class Login extends Component {
                   type="email"
                   className="form-control"
                   id="email"
+                  value={this.state.email}
                   onChange={this.onHandleChange}
                   aria-describedby="emailHelp"
                   placeholder="Enter email"
@@ -58,6 +59,7 @@ class Login extends Component {
                   type="password"
                   className="form-control"
                   id="password"
+                  value={this.state.password}
                   onChange={this.onHandleChange}
                   placeholder="Password"
                   required

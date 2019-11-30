@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import { firestoreConnect } from "react-redux-firebase";
+import { compose } from "redux";
 import ProjectLists from "./ProjectLists";
-//import Display2 from "../design/Display2";
 
 class Project extends Component {
   render() {
@@ -24,9 +25,24 @@ class Project extends Component {
     );
   }
 }
+
 const mapState = state => {
   return {
-    designs: state.design.designs
+    auth: state.firebase.auth,
+    designs: state.firestore.ordered.designs
   };
 };
-export default connect(mapState)(Project);
+
+export default compose(
+  connect(mapState),
+  firestoreConnect(props => {
+    if (!props.auth.uid) return [];
+    return [
+      {
+        collection: "designs",
+        storeAs: "designs",
+        where: [["authorId", "==", props.auth.uid]]
+      }
+    ];
+  })
+)(Project);

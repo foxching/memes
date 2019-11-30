@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import { saveDesign, createDesign } from "../../store/actions/designAction";
+import { createDesign } from "../../store/actions/designAction";
 import { storage } from "../../config/firebase";
 import Display from "../design/Display";
 import Setting from "../design/Setting";
@@ -96,8 +96,8 @@ class Dashboard extends React.Component {
     );
   }
 }
+
 const mapDispatch = {
-  saveDesign,
   createDesign
 };
 
