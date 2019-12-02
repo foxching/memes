@@ -1,7 +1,9 @@
 import React from "react";
+import { connect } from "react-redux";
+import { deleteDesign } from "../../store/actions/designAction";
 import "./ProjectList.css";
 
-const ProjectLists = ({ design }) => {
+const ProjectLists = ({ design, deleteDesign }) => {
   return (
     <div className="item text-center">
       <div className="card card-body">
@@ -31,10 +33,27 @@ const ProjectLists = ({ design }) => {
           </div>
         </div>
         <p>{design.name}</p>
-        <button className="btn btn-primary btn-sm">View</button>
+        {/* //<button className="btn btn-primary btn-sm">View</button> */}
+        <div className="actionButton">
+          <span>
+            <i className="fa fa-info-circle fa-lg" />
+          </span>
+          <span>
+            <i className="fa fa-edit fa-lg" />
+          </span>
+          <span onClick={() => deleteDesign(design.id)}>
+            <i className="fa fa-trash fa-lg" />
+          </span>
+        </div>
       </div>
     </div>
   );
 };
 
-export default ProjectLists;
+const actions = {
+  deleteDesign
+};
+export default connect(
+  null,
+  actions
+)(ProjectLists);
