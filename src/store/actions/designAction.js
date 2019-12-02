@@ -27,3 +27,18 @@ export const createDesign = design => {
       });
   };
 };
+
+export const deleteDesign = id => {
+  return (dispatch, getState, { getFirestore }) => {
+    const firestore = getFirestore();
+    
+      firestore.collection('designs').doc(id).delete()
+      .then(() => {
+        console.log('deleted')
+        dispatch({ type: "DELETE_DESIGN_SUCCESS" });
+      })
+      .catch(err => {
+        dispatch({ type: "DELETE_DESIGN_ERROR", err });
+      });
+  };
+};
