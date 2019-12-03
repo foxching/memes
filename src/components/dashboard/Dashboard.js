@@ -5,6 +5,7 @@ import { storage } from "../../config/firebase";
 import Display from "../design/Display";
 import Setting from "../design/Setting";
 
+
 class Dashboard extends React.Component {
   state = {
     tshirtColor: "black",
@@ -15,6 +16,7 @@ class Dashboard extends React.Component {
     textSize: 44,
     textColor: "white"
   };
+
 
   tshirtColorChange = e => {
     this.setState({ tshirtColor: e.target.id });
@@ -68,6 +70,7 @@ class Dashboard extends React.Component {
     }
   };
   render() {
+    
     return (
       <div>
         <div className="container py-4">
