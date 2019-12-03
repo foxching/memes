@@ -4,7 +4,6 @@ import { createDesign } from "../../store/actions/designAction";
 import { storage } from "../../config/firebase";
 import Display from "../design/Display";
 import Setting from "../design/Setting";
-import Project from "../project/Project";
 
 class Dashboard extends React.Component {
   state = {
@@ -73,13 +72,13 @@ class Dashboard extends React.Component {
       <div>
         <div className="container py-4">
           <div className="row">
-            <div className="col-lg-8">
+            <div className="col col-lg-8">
               <Display
                 display={this.state}
                 formatSize={this.formatTextSize()}
               />
             </div>
-            <div className="col-lg-4">
+            <div className="col col-lg-4">
               <Setting
                 handleChangeText={this.handleChangeText}
                 tshirtColorChange={this.tshirtColorChange}
@@ -89,7 +88,6 @@ class Dashboard extends React.Component {
                 handleSaveDesign={this.handleSaveDesign}
               />
             </div>
-            <Project />
           </div>
         </div>
       </div>

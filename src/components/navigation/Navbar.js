@@ -55,9 +55,17 @@ class Navbar extends Component {
                     id="navbardrop"
                     data-toggle="dropdown"
                   >
-                    <i className="fa fa-smile fa-lg">{username}</i>
+                    <i
+                      className="fa fa-smile fa-lg"
+                      style={{ fontSize: "18px", color: "white" }}
+                    >
+                      {username}
+                    </i>
                   </div>
                   <div className="dropdown-menu">
+                    <NavLink className="dropdown-item" to="/my-design">
+                      My Design
+                    </NavLink>
                     <NavLink className="dropdown-item" to="/settings">
                       Settings
                     </NavLink>
