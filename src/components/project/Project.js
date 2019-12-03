@@ -3,9 +3,9 @@ import ProjectLists from "./ProjectLists";
 
 class Project extends Component {
 
-
   render() {
-    const { designs } = this.props
+    const { designs } = this.props;
+
     return (
       <div className="container mb-5">
         <div className="row">
@@ -22,6 +22,7 @@ class Project extends Component {
     );
   }
 }
+
 
 
 export default Project;

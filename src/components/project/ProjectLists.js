@@ -72,7 +72,6 @@ class ProjectLists extends Component {
     );
   }
 }
-
 const actions = {
   deleteDesign
 };

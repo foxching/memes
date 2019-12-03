@@ -4,7 +4,7 @@ import { createDesign } from "../../store/actions/designAction";
 import { storage } from "../../config/firebase";
 import Display from "../design/Display";
 import Setting from "../design/Setting";
-import Modal from '../modal/Modal'
+
 
 class Dashboard extends React.Component {
   state = {
