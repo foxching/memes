@@ -63,6 +63,9 @@ class Navbar extends Component {
                     </i>
                   </div>
                   <div className="dropdown-menu">
+                    <NavLink className="dropdown-item" to="/my-design">
+                      My Design
+                    </NavLink>
                     <NavLink className="dropdown-item" to="/settings">
                       Settings
                     </NavLink>
