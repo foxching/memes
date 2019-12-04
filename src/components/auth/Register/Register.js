@@ -24,18 +24,20 @@ class Register extends Component {
       this.props.history.push("/");
     }
   };
-
   onChangeHandle = e => {
     this.setState({ [e.target.name]: e.target.value });
   };
-
+ 
+ cancelSignUp = () => {
+   this.props.history.goBack()
+ }
   render() {
     const { authError } = this.props;
     return (
       <section className="container">
         <section className="row ">
           <section className="col-md-7 ">
-            <h1 className="text-left">MEMES-SHIRT</h1>
+            <h1 className="text-left">SIGN UP NOW</h1>
             <br />
             <FontAwesomeIcon
               icon={faPalette}
@@ -63,7 +65,7 @@ class Register extends Component {
           <section className="col-md-5 formContainer">
             <div className="row">
               <div className="col-md-6">
-                <h3 className="text-left">Registration Form</h3>
+                <h3 className="text-left">Register Here</h3>
               </div>
               <div className="col-md-6">
                 <FontAwesomeIcon
@@ -128,7 +130,7 @@ class Register extends Component {
               <button type="submit" className="btn btn-primary ">
                 Submit
               </button>
-              <button type="submit" className="btn btn-warning ">
+              <button  onClick={this.cancelSignUp} className="btn btn-warning ">
                 Cancel
               </button>
 

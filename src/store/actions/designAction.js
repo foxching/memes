@@ -1,3 +1,5 @@
+import { toastr } from "react-redux-toastr";
+
 export const saveDesign = design => {
   return (dispatch, getState) => {
     dispatch({ type: "SAVE_DESIGN", design });
@@ -21,9 +23,11 @@ export const createDesign = design => {
       })
       .then(() => {
         dispatch({ type: "CREATE_PROJECT", design });
+        toastr.success("Success", "Your design has been saved!");
       })
       .catch(err => {
         dispatch({ type: "CREATE_ERROR" }, err);
+        toastr.error("Ops", "There is an error occured");
       });
   };
 };

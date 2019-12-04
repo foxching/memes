@@ -67,6 +67,7 @@ class Dashboard extends React.Component {
   handleSaveDesign = e => {
     if (e.target.id === "save") {
       this.props.createDesign(this.state);
+      this.props.history.push('/my-design')
     }
   };
   render() {
