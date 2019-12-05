@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import { Link} from 'react-router-dom'
 import { deleteDesign } from "../../store/actions/designAction";
 import Modal from "../modal/Modal";
 import "./ProjectList.css";
@@ -15,8 +16,11 @@ class ProjectLists extends Component {
       show: true,
       id
     });
-   
   };
+
+  handleEdit = (id) => {
+    this.props.history.push('/')
+  }
 
   handleClose = () => {
     this.setState({ show: false });
@@ -59,7 +63,7 @@ class ProjectLists extends Component {
                 <i className="fa fa-info-circle fa-lg" />
               </span>
               <span>
-                <i className="fa fa-edit fa-lg" />
+                <Link to={`/design/${design.id}`} ><i className="fa fa-edit fa-lg" /></Link>
               </span>
               <span onClick={() => this.handleShow(design.id)}>
                 <i className="fa fa-trash fa-lg" />

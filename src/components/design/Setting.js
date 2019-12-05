@@ -6,6 +6,7 @@ const baseUrl =
 
 const Settings = props => {
   const {
+    display,
     tshirtColorChange,
     handleChangeText,
     handleImageUpload,
@@ -54,6 +55,7 @@ const Settings = props => {
       <input
         type="text"
         name="upperText"
+        value={display.upperText}
         className="form-control form-control sm mb-2"
         placeholder="Upper Text"
         onChange={handleChangeText}
@@ -61,6 +63,7 @@ const Settings = props => {
       <input
         type="text"
         name="lowerText"
+        value={display.lowerText}
         className="form-control form-control sm mb-2"
         placeholder="Lower Text"
         onChange={handleChangeText}
@@ -79,13 +82,13 @@ const Settings = props => {
         onChange={handleTextSize}
         type="range"
         className="custom-range"
-        //value={textSize}
+        value={display.textSize}
         min="24"
         max="44"
       />
       <hr />
       <h4>Text Color</h4>
-      <select onChange={handleTextColor} className="custom-select">
+      <select onChange={handleTextColor} className="custom-select" value={display.textColor}>
         <option>White</option>
         <option>Black</option>
         <option>Blue</option>

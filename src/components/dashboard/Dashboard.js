@@ -1,5 +1,7 @@
 import React from "react";
+import { firestoreConnect } from "react-redux-firebase";
 import { connect } from "react-redux";
+import { compose } from "redux";
 import { createDesign } from "../../store/actions/designAction";
 import { storage } from "../../config/firebase";
 import Display from "../design/Display";
@@ -10,14 +12,32 @@ class Dashboard extends React.Component {
   state = {
     tshirtColor: "black",
     upperText: "this is upperText",
-    lowerText: "this is lowerText",
-    image: "",
+    lowerText:  "this is lowerText",
+    image:  "",
     url: "",
-    textSize: 44,
-    textColor: "white"
+    textSize:  44,
+    textColor:  "white"
   };
 
 
+
+  UNSAFE_componentWillReceiveProps(nextProps){
+    if(this.props.design){
+        if(this.props.design !== nextProps.design){
+          this.setState({
+            tshirtColor:nextProps.design.tshirtColor || 'black',
+            upperText:nextProps.design.upperText || "this is upperText",
+            lowerText:nextProps.design.lowerText || "this is lowerText",
+            image:nextProps.design.image || '',
+            url:nextProps.design.url || '',
+            textSize:nextProps.design.textSize || 44,
+            textColor:nextProps.design.textColor || 'white'
+          })
+    }
+    }
+    
+  }
+  
   tshirtColorChange = e => {
     this.setState({ tshirtColor: e.target.id });
   };
@@ -57,7 +77,7 @@ class Dashboard extends React.Component {
 
   formatTextSize = () => {
     const size = this.state.textSize;
-    return parseInt(size);
+    return size;
   };
 
   handleTextColor = e => {
@@ -71,7 +91,8 @@ class Dashboard extends React.Component {
     }
   };
   render() {
-    
+    console.log(this.props.design)
+    console.log(this.state)
     return (
       <div>
         <div className="container py-4">
@@ -84,6 +105,7 @@ class Dashboard extends React.Component {
             </div>
             <div className="col col-lg-4">
               <Setting
+                display={this.state}
                 handleChangeText={this.handleChangeText}
                 tshirtColorChange={this.tshirtColorChange}
                 handleImageUpload={this.handleImageUpload}
@@ -98,12 +120,33 @@ class Dashboard extends React.Component {
     );
   }
 }
+const mapState = state => {
+  let design ={}
+
+  if(state.firestore.ordered.designs && state.firestore.ordered.designs[0]){
+    design= state.firestore.ordered.designs[0]
+  }
+  return {
+    design
+  }
+}
+
 
 const mapDispatch = {
   createDesign
 };
 
-export default connect(
-  null,
-  mapDispatch
-)(Dashboard);
+export default compose(firestoreConnect(props => {
+  if(props.match.params.id === undefined){
+    return []
+  }
+  return [
+    {
+        collection:'designs',
+        doc:props.match.params.id,
+        storeAs: "designs",
+    }
+  ]
+}),connect(mapState,mapDispatch))(Dashboard) 
+
+

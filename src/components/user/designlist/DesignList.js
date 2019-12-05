@@ -6,9 +6,9 @@ import Project from "../../project/Project";
 import Loader from "../../loader/Loader";
 
 class DesignList extends Component {
+  
   render() {
     const { designs, requesting } = this.props;
-    //const loading = !isLoaded(designs)
     const loading = Object.values(requesting).some(a => a === true);
     if (loading) {
       return <Loader />;
@@ -40,8 +40,9 @@ export default compose(
       {
         collection: "designs",
         storeAs: "designs",
-        where: [["authorId", "==", props.auth.uid]]
+        where: [["authorId", "==", props.auth.uid]],
+        //queryParams: ['orderByChild=uid', `equalTo=${props.auth.uid}`]
       }
     ];
   })
-)(DesignList);
+)(DesignList)
