@@ -3,7 +3,7 @@ import "./Display.css";
 
 const Display = ({ display, formatSize }) => {
   return (
-    <div className="card card-content text-center">
+    <div className="text-center">
       <div className="imgTshirt ">
         <img
           src={`https://res.cloudinary.com/dkkgmzpqd/image/upload/v1545217305/T-shirt%20Images/${

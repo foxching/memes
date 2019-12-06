@@ -9,9 +9,9 @@ class Navbar extends Component {
     return (
       <div className="navbar navbar-expand-lg navbar-light bg-primary">
         <div className="container">
-          <NavLink to="/" className="navbar-brand text-white">
+          <div  className="navbar-brand text-white">
             MEME'S SHIRT
-          </NavLink>
+          </div>
           <button
             type="button"
             className="navbar-toggler"
@@ -48,6 +48,18 @@ class Navbar extends Component {
                   </li>
                 </React.Fragment>
               ) : (
+              <React.Fragment>
+                <li className="nav-item ">
+                    <NavLink to="/">
+                      <i
+                        className="fa fa-plus fa-sm nav-link"
+                        style={{ fontSize: "18px", color: "white" }}
+                      >
+                        {" "}
+                        New
+                      </i>{" "}
+                    </NavLink>
+                  </li>
                 <li className="nav-item dropdown">
                   <div
                     href="#"
@@ -78,6 +90,9 @@ class Navbar extends Component {
                     </NavLink>
                   </div>
                 </li>
+              
+              </React.Fragment>
+               
               )}
             </ul>
           </div>

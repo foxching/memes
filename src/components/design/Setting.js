@@ -88,7 +88,11 @@ const Settings = props => {
       />
       <hr />
       <h4>Text Color</h4>
-      <select onChange={handleTextColor} className="custom-select" value={display.textColor}>
+      <select
+        onChange={handleTextColor}
+        className="custom-select"
+        value={display.textColor}
+      >
         <option>White</option>
         <option>Black</option>
         <option>Blue</option>

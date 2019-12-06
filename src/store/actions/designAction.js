@@ -32,13 +32,38 @@ export const createDesign = design => {
   };
 };
 
+export const updateDesign = updatedDesign => {
+  return async (dispatch, getState, { getFirestore }) => {
+    const firestore = getFirestore();
+    firestore
+      .update(`designs/${updateDesign.id}`, updateDesign)
+      .then(res => {
+        toastr.success("Success", "Your design has been saved!");
+      })
+      .catch(err => {
+        dispatch({ type: "CREATE_ERROR" }, err);
+        toastr.error("Ops", "There is an error occured");
+      });
+
+    // try {
+    //   await firestore.update(`events/${updatedEvent.id}`, updatedEvent);
+    //   toastr.success("Success", " Events has been updated!");
+    // } catch (error) {
+    //   toastr.error("Ops", "There is an error occured");
+    // }
+  };
+};
+
 export const deleteDesign = id => {
   return (dispatch, getState, { getFirestore }) => {
     const firestore = getFirestore();
-    
-      firestore.collection('designs').doc(id).delete()
+
+    firestore
+      .collection("designs")
+      .doc(id)
+      .delete()
       .then(() => {
-        console.log('deleted')
+        console.log("deleted");
         dispatch({ type: "DELETE_DESIGN_SUCCESS" });
       })
       .catch(err => {

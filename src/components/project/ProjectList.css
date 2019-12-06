@@ -4,28 +4,25 @@
 
 .memesThumbnail {
   position: absolute;
-  top: 20%;
-  left: 28.9%;
+  top: 22%;
+  left: 35.9%;
 }
 
 .memesThumbnail img {
   max-width: 60px;
   border: #fff solid 1px;
-  padding: 0;
 }
 
 .memesThumbnail p {
   font-family: Impact, Charcoal, "sans-serif";
   color: #fff;
+  margin-left: 5px;
 }
-
 .upperTextThumbnail p {
-  margin-left: 15px;
-  margin-bottom: 10px;
+  margin-bottom: 5px;
 }
 .lowerTextThumbnail p {
-  margin-left: 15px;
-  margin-top: 10px;
+  margin-top: 5px;
 }
 
 .actionButton {

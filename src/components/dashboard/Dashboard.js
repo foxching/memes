@@ -7,37 +7,33 @@ import { storage } from "../../config/firebase";
 import Display from "../design/Display";
 import Setting from "../design/Setting";
 
-
 class Dashboard extends React.Component {
   state = {
     tshirtColor: "black",
     upperText: "this is upperText",
-    lowerText:  "this is lowerText",
-    image:  "",
+    lowerText: "this is lowerText",
+    image: "",
     url: "",
-    textSize:  44,
-    textColor:  "white"
+    textSize: 44,
+    textColor: "white"
   };
 
-
-
-  UNSAFE_componentWillReceiveProps(nextProps){
-    if(this.props.design){
-        if(this.props.design !== nextProps.design){
-          this.setState({
-            tshirtColor:nextProps.design.tshirtColor || 'black',
-            upperText:nextProps.design.upperText || "this is upperText",
-            lowerText:nextProps.design.lowerText || "this is lowerText",
-            image:nextProps.design.image || '',
-            url:nextProps.design.url || '',
-            textSize:nextProps.design.textSize || 44,
-            textColor:nextProps.design.textColor || 'white'
-          })
+  UNSAFE_componentWillReceiveProps(nextProps) {
+    if (this.props.design) {
+      if (this.props.design !== nextProps.design) {
+        this.setState({
+          tshirtColor: nextProps.design.tshirtColor || "black",
+          upperText: nextProps.design.upperText || "this is upperText",
+          lowerText: nextProps.design.lowerText || "this is lowerText",
+          image: nextProps.design.image || "",
+          url: nextProps.design.url || "",
+          textSize: nextProps.design.textSize || 44,
+          textColor: nextProps.design.textColor || "white"
+        });
+      }
     }
-    }
-    
   }
-  
+
   tshirtColorChange = e => {
     this.setState({ tshirtColor: e.target.id });
   };
@@ -77,7 +73,7 @@ class Dashboard extends React.Component {
 
   formatTextSize = () => {
     const size = this.state.textSize;
-    return size;
+    return parseInt(size);
   };
 
   handleTextColor = e => {
@@ -87,15 +83,16 @@ class Dashboard extends React.Component {
   handleSaveDesign = e => {
     if (e.target.id === "save") {
       this.props.createDesign(this.state);
-      this.props.history.push('/my-design')
+      this.props.history.push("/my-design");
     }
   };
   render() {
-    console.log(this.props.design)
-    console.log(this.state)
+    console.log(this.props.design);
+    console.log(this.state);
     return (
       <div>
         <div className="container py-4">
+        <div className='card card-body'>
           <div className="row">
             <div className="col col-lg-8">
               <Display
@@ -116,37 +113,44 @@ class Dashboard extends React.Component {
             </div>
           </div>
         </div>
+        
+        
+        </div>
+          
       </div>
     );
   }
 }
 const mapState = state => {
-  let design ={}
+  let design = {};
 
-  if(state.firestore.ordered.designs && state.firestore.ordered.designs[0]){
-    design= state.firestore.ordered.designs[0]
+  if (state.firestore.ordered.designs && state.firestore.ordered.designs[0]) {
+    design = state.firestore.ordered.designs[0];
   }
   return {
     design
-  }
-}
-
+  };
+};
 
 const mapDispatch = {
   createDesign
 };
 
-export default compose(firestoreConnect(props => {
-  if(props.match.params.id === undefined){
-    return []
-  }
-  return [
-    {
-        collection:'designs',
-        doc:props.match.params.id,
-        storeAs: "designs",
+export default compose(
+  firestoreConnect(props => {
+    if (props.match.params.id === undefined) {
+      return [];
     }
-  ]
-}),connect(mapState,mapDispatch))(Dashboard) 
-
-
+    return [
+      {
+        collection: "designs",
+        doc: props.match.params.id,
+        storeAs: "designs"
+      }
+    ];
+  }),
+  connect(
+    mapState,
+    mapDispatch
+  )
+)(Dashboard);
