@@ -9,7 +9,7 @@ class Navbar extends Component {
     return (
       <div className="navbar navbar-expand-lg navbar-light bg-primary">
         <div className="container">
-          <div  className="navbar-brand text-white">
+          <div className="navbar-brand text-white">
             MEME'S SHIRT
           </div>
           <button

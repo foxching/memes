@@ -41,7 +41,6 @@ export default compose(
         collection: "designs",
         storeAs: "designs",
         where: [["authorId", "==", props.auth.uid]],
-        //queryParams: ['orderByChild=uid', `equalTo=${props.auth.uid}`]
       }
     ];
   })

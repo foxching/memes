@@ -2,7 +2,7 @@ import React from "react";
 import { firestoreConnect } from "react-redux-firebase";
 import { connect } from "react-redux";
 import { compose } from "redux";
-import { createDesign } from "../../store/actions/designAction";
+import { createDesign, updateDesign } from "../../store/actions/designAction";
 import { storage } from "../../config/firebase";
 import Display from "../design/Display";
 import Setting from "../design/Setting";
@@ -81,42 +81,45 @@ class Dashboard extends React.Component {
   };
 
   handleSaveDesign = e => {
-    if (e.target.id === "save") {
+    e.preventDefault();
+    const design = { ...this.props.design, ...this.state };
+    if (this.props.design.id && this.props.match.params.id !== undefined) {
+      this.props.updateDesign(design);
+      this.props.history.push("/my-design");
+    } else {
       this.props.createDesign(this.state);
       this.props.history.push("/my-design");
     }
   };
   render() {
-    console.log(this.props.design);
-    console.log(this.state);
+    const { design } = this.props;
     return (
       <div>
         <div className="container py-4">
-        <div className='card card-body'>
-          <div className="row">
-            <div className="col col-lg-8">
-              <Display
-                display={this.state}
-                formatSize={this.formatTextSize()}
-              />
-            </div>
-            <div className="col col-lg-4">
-              <Setting
-                display={this.state}
-                handleChangeText={this.handleChangeText}
-                tshirtColorChange={this.tshirtColorChange}
-                handleImageUpload={this.handleImageUpload}
-                handleTextSize={this.handleTextSize}
-                handleTextColor={this.handleTextColor}
-                handleSaveDesign={this.handleSaveDesign}
-              />
+          <div className="card card-body">
+            <div className="row">
+              <div className="col col-lg-8">
+                <Display
+                  display={this.state}
+                  formatSize={this.formatTextSize()}
+                />
+              </div>
+              <div className="col col-lg-4">
+                <Setting
+                  id={design.id}
+                  paramId={this.props.match.params.id}
+                  display={this.state}
+                  handleChangeText={this.handleChangeText}
+                  tshirtColorChange={this.tshirtColorChange}
+                  handleImageUpload={this.handleImageUpload}
+                  handleTextSize={this.handleTextSize}
+                  handleTextColor={this.handleTextColor}
+                  handleSaveDesign={this.handleSaveDesign}
+                />
+              </div>
             </div>
           </div>
         </div>
-        
-        
-        </div>
-          
       </div>
     );
   }
@@ -133,7 +136,8 @@ const mapState = state => {
 };
 
 const mapDispatch = {
-  createDesign
+  createDesign,
+  updateDesign
 };
 
 export default compose(

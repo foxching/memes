@@ -36,21 +36,14 @@ export const updateDesign = updatedDesign => {
   return async (dispatch, getState, { getFirestore }) => {
     const firestore = getFirestore();
     firestore
-      .update(`designs/${updateDesign.id}`, updateDesign)
+      .update(`designs/${updatedDesign.id}`, updatedDesign)
       .then(res => {
-        toastr.success("Success", "Your design has been saved!");
+        toastr.success("Success", "Your design has been updated!");
       })
       .catch(err => {
         dispatch({ type: "CREATE_ERROR" }, err);
         toastr.error("Ops", "There is an error occured");
       });
-
-    // try {
-    //   await firestore.update(`events/${updatedEvent.id}`, updatedEvent);
-    //   toastr.success("Success", " Events has been updated!");
-    // } catch (error) {
-    //   toastr.error("Ops", "There is an error occured");
-    // }
   };
 };
 
