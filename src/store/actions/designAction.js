@@ -1,15 +1,13 @@
 import { toastr } from "react-redux-toastr";
 
-export const saveDesign = design => {
+export const fetchDesigns = designs => {
   return (dispatch, getState) => {
-    dispatch({ type: "SAVE_DESIGN", design });
+    dispatch({ type: "FETCH_DESIGN", designs });
   };
 };
 
 export const createDesign = design => {
   return (dispatch, getState, { getFirebase, getFirestore }) => {
-    //async call to database
-    // const firebase = getFirebase();
     const firestore = getFirestore();
     const profile = getState().firebase.profile;
     const authId = getState().firebase.auth.uid;

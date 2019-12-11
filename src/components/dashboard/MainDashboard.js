@@ -4,10 +4,10 @@ import { connect } from "react-redux";
 import { compose } from "redux";
 import { createDesign, updateDesign } from "../../store/actions/designAction";
 import { storage } from "../../config/firebase";
-import Display from "../design/Display";
-import Setting from "../design/Setting";
+import Display from "../designdashboard/Display";
+import Setting from "../designdashboard/Setting";
 
-class Dashboard extends React.Component {
+class MainDashboard extends React.Component {
   state = {
     tshirtColor: "black",
     upperText: "this is upperText",
@@ -157,4 +157,4 @@ export default compose(
     mapState,
     mapDispatch
   )
-)(Dashboard);
+)(MainDashboard);

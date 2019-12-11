@@ -1,11 +1,11 @@
 import React from "react";
 import { BrowserRouter as Router, Switch } from "react-router-dom";
 
-import Dashboard from "./components/dashboard/Dashboard";
+import MainDashboard from "./components/dashboard/MainDashboard";
 import Register from "./components/auth/Register/Register";
 import Login from "./components/auth/Login/Login";
 import Navbar from "./components/navigation/Navbar";
-import DesignList from './components/user/designlist/DesignList'
+import DesignList from "./components/user/designs/Designs";
 //import DesignDetail from './components/design/DesignDetail'
 import PublicRoute from "./router/PublicRoute";
 import PrivateRoute from "./router/PrivateRoute";
@@ -17,8 +17,8 @@ const App = () => {
       <div>
         <Navbar />
         <Switch>
-          <PrivateRoute path="/" exact={true} component={Dashboard} />
-          <PrivateRoute path="/design/:id"  component={Dashboard} />
+          <PrivateRoute path="/" exact={true} component={MainDashboard} />
+          <PrivateRoute path="/design/:id" component={MainDashboard} />
           <PrivateRoute path="/my-design" exact={true} component={DesignList} />
           <PublicRoute path="/register" component={Register} />
           <PublicRoute path="/login" component={Login} />

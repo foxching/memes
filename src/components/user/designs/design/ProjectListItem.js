@@ -1,26 +1,26 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { Link} from 'react-router-dom'
-import { deleteDesign } from "../../store/actions/designAction";
-import Modal from "../modal/Modal";
+import { Link } from "react-router-dom";
+import { deleteDesign } from "../../../../store/actions/designAction";
+import Modal from "../../../modal/Modal";
 import "./ProjectList.css";
 
-class ProjectLists extends Component {
+class ProjectListItem extends Component {
   state = {
     show: false,
-    id:null
+    id: null
   };
 
-  handleShow = (id) => {
+  handleShow = id => {
     this.setState({
       show: true,
       id
     });
   };
 
-  handleEdit = (id) => {
-    this.props.history.push('/')
-  }
+  handleEdit = id => {
+    this.props.history.push("/");
+  };
 
   handleClose = () => {
     this.setState({ show: false });
@@ -63,7 +63,9 @@ class ProjectLists extends Component {
                 <i className="fa fa-info-circle fa-lg" />
               </span>
               <span>
-                <Link to={`/design/${design.id}`} ><i className="fa fa-edit fa-lg" /></Link>
+                <Link to={`/design/${design.id}`}>
+                  <i className="fa fa-edit fa-lg" />
+                </Link>
               </span>
               <span onClick={() => this.handleShow(design.id)}>
                 <i className="fa fa-trash fa-lg" />
@@ -71,7 +73,12 @@ class ProjectLists extends Component {
             </div>
           </div>
         </div>
-        <Modal show={this.state.show} close={this.handleClose} id={this.state.id} deleteDesign={deleteDesign}/>
+        <Modal
+          show={this.state.show}
+          close={this.handleClose}
+          id={this.state.id}
+          deleteDesign={deleteDesign}
+        />
       </React.Fragment>
     );
   }
@@ -82,4 +89,4 @@ const actions = {
 export default connect(
   null,
   actions
-)(ProjectLists);
+)(ProjectListItem);
