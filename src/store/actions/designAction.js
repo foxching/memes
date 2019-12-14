@@ -1,4 +1,5 @@
 import { toastr } from "react-redux-toastr";
+import firebase from "../../config/firebase";
 
 export const fetchDesigns = designs => {
   return (dispatch, getState) => {
@@ -60,5 +61,34 @@ export const deleteDesign = id => {
       .catch(err => {
         dispatch({ type: "DELETE_DESIGN_ERROR", err });
       });
+  };
+};
+
+export const getDesigns = () => {
+  return async (dispatch, getState) => {
+    const firestore = firebase.firestore();
+    const user = firebase.auth().currentUser;
+    //const today = new Date(Date.now());
+    const eventsQuery = firestore
+      .collection("designs")
+      .where("authorId", "==", user.uid);
+
+    console.log(user.uid);
+
+    try {
+      //dispatch(asyncActionStarted());
+      let querySnap = await eventsQuery.get();
+      let designs = [];
+      for (let i = 0; i < querySnap.docs.length; i++) {
+        let evt = { ...querySnap.docs[i].data(), id: querySnap.docs[i].id };
+        designs.push(evt);
+        console.log(designs);
+      }
+      dispatch({ type: "FETCH_DESIGN", designs });
+      //dispatch(asyncActionFinished());
+    } catch (error) {
+      console.log(error);
+      //dispatch(asyncActionError());
+    }
   };
 };
