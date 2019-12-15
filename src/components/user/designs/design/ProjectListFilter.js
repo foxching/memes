@@ -17,7 +17,7 @@ class ProjectListFilters extends Component {
     this.props.setValue(val);
   };
   render() {
-    const { designs } = this.props;
+    const { designs, filters } = this.props;
     if (designs) {
       var text = "";
       var i;
@@ -29,7 +29,9 @@ class ProjectListFilters extends Component {
     return (
       <div className="row">
         <div className="col col-md-4 col-sm-12 mt-2">
-          <h5 className="text-muted ml-4">Showing 4 of 10 Results</h5>
+          <h5 className="text-muted ml-4">
+            Showing {filters.show} of {designs.length} Results
+          </h5>
         </div>
         <div className="col col-md-4 col-sm-12">
           <div className="row">

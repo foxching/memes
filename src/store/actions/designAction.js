@@ -55,13 +55,11 @@ export const updateDesign = (id, updatedDesign) => {
 export const deleteDesign = id => {
   return (dispatch, getState, { getFirestore }) => {
     const firestore = getFirestore();
-
     firestore
       .collection("designs")
       .doc(id)
       .delete()
       .then(() => {
-        console.log("deleted");
         dispatch({ type: "DELETE_DESIGN_SUCCESS", id });
       })
       .catch(err => {
