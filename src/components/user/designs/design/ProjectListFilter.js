@@ -5,6 +5,7 @@ import {
   filterOldest,
   setValue
 } from "../../../../store/actions/filterActions";
+import selecteDesigns from "../../../../store/selectors/selectedDesigns";
 
 class ProjectListFilters extends Component {
   onSortChange = e => {
@@ -17,7 +18,7 @@ class ProjectListFilters extends Component {
     this.props.setValue(val);
   };
   render() {
-    const { designs, filters } = this.props;
+    const { filters, designs, filteredDesigns } = this.props;
     if (designs) {
       var text = "";
       var i;
@@ -30,7 +31,7 @@ class ProjectListFilters extends Component {
       <div className="row">
         <div className="col col-md-4 col-sm-12 mt-2">
           <h5 className="text-muted ml-4">
-            Showing {filters.show} of {designs.length} Results
+            Showing {filteredDesigns.length} of {designs.length} Results
           </h5>
         </div>
         <div className="col col-md-4 col-sm-12">
@@ -79,7 +80,8 @@ class ProjectListFilters extends Component {
 
 const mapStateToProps = state => ({
   filters: state.filters,
-  designs: state.designs
+  designs: state.designs,
+  filteredDesigns: selecteDesigns(state.designs, state.filters)
 });
 
 const actions = {
