@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import ProjectList from "./design/ProjectList";
 import ProjectListFilter from "./design/ProjectListFilter";
 
-class DesignList extends Component {
+class Designs extends Component {
   render() {
     return (
       <div className="container py-3">
@@ -15,4 +15,4 @@ class DesignList extends Component {
   }
 }
 
-export default DesignList;
+export default Designs;

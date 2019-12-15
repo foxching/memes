@@ -1,9 +1,5 @@
 import { getDesigns } from "./designAction";
 
-// export const filterNewest = () => ({
-//   type: "NEWEST"
-// });
-
 export const filterNewest = () => {
   return (dispatch, getState) => {
     dispatch({ type: "NEWEST" });
@@ -11,13 +7,16 @@ export const filterNewest = () => {
   };
 };
 
-// export const filterOldest = () => ({
-//   type: "OLDEST"
-// });
-
 export const filterOldest = () => {
   return (dispatch, getState) => {
     dispatch({ type: "OLDEST" });
+    dispatch(getDesigns());
+  };
+};
+
+export const setValue = val => {
+  return (dispatch, getState) => {
+    dispatch({ type: "SET_VALUE", val });
     dispatch(getDesigns());
   };
 };

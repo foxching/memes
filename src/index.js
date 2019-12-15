@@ -13,16 +13,14 @@ store.firebaseAuthIsReady.then(() => {
     <Provider store={store}>
       <div>
         <ReduxToastr
-            position="bottom-right"
-            preventDuplicates
-            transitionIn="fadeIn"
-            transitionOut="fadeOut"
-            closeOnToastrClick
-      />
-      <App />
-      
+          position="bottom-right"
+          preventDuplicates
+          transitionIn="fadeIn"
+          transitionOut="fadeOut"
+          closeOnToastrClick
+        />
+        <App />
       </div>
-      
     </Provider>,
     document.getElementById("root")
   );

@@ -2,7 +2,6 @@ const designs = [];
 export const designReducer = (state = designs, action) => {
   switch (action.type) {
     case "FETCH_DESIGN":
-      console.log(action.designs);
       return action.designs;
     case "CREATE_DESIGN_SUCCESS":
       console.log(action.design);
@@ -10,9 +9,19 @@ export const designReducer = (state = designs, action) => {
     case "CREATE_DESIGN_ERROR":
       console.log(action.err);
       return state;
+    case "UPDATE_SUCCESS":
+      return state.map(design => {
+        if (design.id === action.id) {
+          return {
+            ...design,
+            ...action.updatedDesign
+          };
+        } else {
+          return design;
+        }
+      });
     case "DELETE_DESIGN_SUCCESS":
-      console.log("delete success");
-      return state;
+      return state.filter(({ id }) => id !== action.id);
     case "DELETE_DESIGN_ERROR":
       console.log(action.err);
       return state;

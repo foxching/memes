@@ -1,5 +1,10 @@
 import { toastr } from "react-redux-toastr";
 import firebase from "../../config/firebase";
+import {
+  asyncActionStarted,
+  asyncActionFinished,
+  asyncActionError
+} from "./asyncActions";
 
 export const fetchDesigns = designs => {
   return (dispatch, getState) => {
@@ -31,12 +36,13 @@ export const createDesign = design => {
   };
 };
 
-export const updateDesign = updatedDesign => {
+export const updateDesign = (id, updatedDesign) => {
   return async (dispatch, getState, { getFirestore }) => {
     const firestore = getFirestore();
     firestore
       .update(`designs/${updatedDesign.id}`, updatedDesign)
       .then(res => {
+        dispatch({ type: "UPDATE_SUCCESS", id, updatedDesign });
         toastr.success("Success", "Your design has been updated!");
       })
       .catch(err => {
@@ -56,7 +62,7 @@ export const deleteDesign = id => {
       .delete()
       .then(() => {
         console.log("deleted");
-        dispatch({ type: "DELETE_DESIGN_SUCCESS" });
+        dispatch({ type: "DELETE_DESIGN_SUCCESS", id });
       })
       .catch(err => {
         dispatch({ type: "DELETE_DESIGN_ERROR", err });
@@ -68,27 +74,22 @@ export const getDesigns = () => {
   return async (dispatch, getState) => {
     const firestore = firebase.firestore();
     const user = firebase.auth().currentUser;
-    //const today = new Date(Date.now());
     const eventsQuery = firestore
       .collection("designs")
       .where("authorId", "==", user.uid);
-
-    console.log(user.uid);
-
     try {
-      //dispatch(asyncActionStarted());
+      dispatch(asyncActionStarted());
       let querySnap = await eventsQuery.get();
       let designs = [];
       for (let i = 0; i < querySnap.docs.length; i++) {
         let evt = { ...querySnap.docs[i].data(), id: querySnap.docs[i].id };
         designs.push(evt);
-        console.log(designs);
       }
       dispatch({ type: "FETCH_DESIGN", designs });
-      //dispatch(asyncActionFinished());
+      dispatch(asyncActionFinished());
     } catch (error) {
       console.log(error);
-      //dispatch(asyncActionError());
+      dispatch(asyncActionError());
     }
   };
 };

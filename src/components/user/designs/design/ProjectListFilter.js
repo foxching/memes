@@ -2,7 +2,8 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import {
   filterNewest,
-  filterOldest
+  filterOldest,
+  setValue
 } from "../../../../store/actions/filterActions";
 
 class ProjectListFilters extends Component {
@@ -11,7 +12,20 @@ class ProjectListFilters extends Component {
     val === "new" ? this.props.filterNewest() : this.props.filterOldest();
   };
 
+  onFilterShowChange = e => {
+    const val = e.target.value;
+    this.props.setValue(val);
+  };
   render() {
+    const { designs } = this.props;
+    if (designs) {
+      var text = "";
+      var i;
+      for (i = 0; i < designs.length; i++) {
+        text += [i + 1];
+      }
+    }
+
     return (
       <div className="row">
         <div className="col col-md-4 col-sm-12 mt-2">
@@ -44,10 +58,14 @@ class ProjectListFilters extends Component {
               <select
                 className="form-control"
                 style={{ height: "88%", maxWidth: "35%" }}
+                value={this.props.filters.show}
+                onChange={this.onFilterShowChange}
               >
-                <option className="text-muted">5</option>
-                <option>10</option>
-                <option>15</option>
+                {Array.from(text).map((t, index) => (
+                  <option value={t} className="text-muted" key={index}>
+                    {t}
+                  </option>
+                ))}
               </select>
             </div>
           </div>
@@ -58,12 +76,14 @@ class ProjectListFilters extends Component {
 }
 
 const mapStateToProps = state => ({
-  filters: state.filters
+  filters: state.filters,
+  designs: state.designs
 });
 
 const actions = {
   filterNewest,
-  filterOldest
+  filterOldest,
+  setValue
 };
 
 export default connect(

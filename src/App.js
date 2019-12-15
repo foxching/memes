@@ -5,7 +5,7 @@ import MainDashboard from "./components/dashboard/MainDashboard";
 import Register from "./components/auth/Register/Register";
 import Login from "./components/auth/Login/Login";
 import Navbar from "./components/navigation/Navbar";
-import DesignList from "./components/user/designs/Designs";
+import Designs from "./components/user/designs/Designs";
 //import DesignDetail from './components/design/DesignDetail'
 import PublicRoute from "./router/PublicRoute";
 import PrivateRoute from "./router/PrivateRoute";
@@ -19,7 +19,7 @@ const App = () => {
         <Switch>
           <PrivateRoute path="/" exact={true} component={MainDashboard} />
           <PrivateRoute path="/design/:id" component={MainDashboard} />
-          <PrivateRoute path="/my-design" exact={true} component={DesignList} />
+          <PrivateRoute path="/my-design" exact={true} component={Designs} />
           <PublicRoute path="/register" component={Register} />
           <PublicRoute path="/login" component={Login} />
         </Switch>

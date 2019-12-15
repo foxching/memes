@@ -19,18 +19,16 @@ class MainDashboard extends React.Component {
   };
 
   UNSAFE_componentWillReceiveProps(nextProps) {
-    if (this.props.design) {
-      if (this.props.design !== nextProps.design) {
-        this.setState({
-          tshirtColor: nextProps.design.tshirtColor || "black",
-          upperText: nextProps.design.upperText || "this is upperText",
-          lowerText: nextProps.design.lowerText || "this is lowerText",
-          image: nextProps.design.image || "",
-          url: nextProps.design.url || "",
-          textSize: nextProps.design.textSize || 44,
-          textColor: nextProps.design.textColor || "white"
-        });
-      }
+    if (this.props.design !== nextProps.design) {
+      this.setState({
+        tshirtColor: nextProps.design.tshirtColor || "black",
+        upperText: nextProps.design.upperText || "this is upperText",
+        lowerText: nextProps.design.lowerText || "this is lowerText",
+        image: nextProps.design.image || "",
+        url: nextProps.design.url || "",
+        textSize: nextProps.design.textSize || 44,
+        textColor: nextProps.design.textColor || "white"
+      });
     }
   }
 
@@ -84,7 +82,7 @@ class MainDashboard extends React.Component {
     e.preventDefault();
     const design = { ...this.props.design, ...this.state };
     if (this.props.design.id && this.props.match.params.id !== undefined) {
-      this.props.updateDesign(design);
+      this.props.updateDesign(this.props.design.id, design);
       this.props.history.push("/my-design");
     } else {
       this.props.createDesign(this.state);

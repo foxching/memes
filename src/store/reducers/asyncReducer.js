@@ -2,7 +2,7 @@ const initialState = {
   loading: false
 };
 
-const asyncReducer = (state = initialState, action) => {
+export const asyncReducer = (state = initialState, action) => {
   switch (action.type) {
     case "ASYNC_ACTION_START":
       return {
@@ -23,5 +23,3 @@ const asyncReducer = (state = initialState, action) => {
       return state;
   }
 };
-
-export default asyncReducer;
