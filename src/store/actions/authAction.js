@@ -1,5 +1,3 @@
-import { getDesigns } from "./designAction";
-
 export const signUp = newUser => {
   return (dispatch, getState, { getFirebase, getFirestore }) => {
     const firestore = getFirestore();
@@ -9,7 +7,6 @@ export const signUp = newUser => {
       .createUserWithEmailAndPassword(newUser.email, newUser.password)
       .then(res => {
         const user = firebase.auth().currentUser;
-        //console.log(user);
         user.updateProfile({
           displayName: newUser.username
         });
@@ -45,7 +42,6 @@ export const signIn = credentials => {
       .signInWithEmailAndPassword(credentials.email, credentials.password)
       .then(() => {
         dispatch({ type: "LOGIN_SUCCESS" });
-        dispatch(getDesigns());
       })
       .catch(err => {
         console.log(err.code);

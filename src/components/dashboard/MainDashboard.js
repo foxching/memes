@@ -6,6 +6,7 @@ import { createDesign, updateDesign } from "../../store/actions/designAction";
 import { storage } from "../../config/firebase";
 import Display from "../designdashboard/Display";
 import Setting from "../designdashboard/Setting";
+import Loader from "../loader/Loader";
 
 class MainDashboard extends React.Component {
   state = {
@@ -90,7 +91,9 @@ class MainDashboard extends React.Component {
     }
   };
   render() {
-    const { design } = this.props;
+    const { design, requesting } = this.props;
+    const loading = Object.values(requesting).some(a => a === true);
+    if (loading) return <Loader inverted={true} />;
     return (
       <div>
         <div className="container py-4">
@@ -129,7 +132,8 @@ const mapState = state => {
     design = state.firestore.ordered.designs[0];
   }
   return {
-    design
+    design,
+    requesting: state.firestore.status.requesting
   };
 };
 
