@@ -34,7 +34,7 @@ class BasicPage extends Component {
               className="form-group col-md-6"
               style={{ marginTop: "-12px", marginBottom: "-15px" }}
             >
-              <label style={{ fontSize: "16px", margin: 0 }}>Gender:</label>
+              <label style={{ fontSize: "14px", margin: 0 }}>Gender:</label>
               <label className="radio-inline">
                 <input type="radio" name="optradio" checked />
                 Male
@@ -66,7 +66,7 @@ class BasicPage extends Component {
           </div>
 
           <hr className="divider" />
-          <button type="submit" className="btn btn-success  ">
+          <button type="submit" className="btn btn-success disabled ">
             Update Profile
           </button>
         </form>
