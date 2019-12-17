@@ -32,7 +32,7 @@ class BasicPage extends Component {
           <div className="row">
             <div
               className="form-group col-md-6"
-              style={{ marginTop: "-12px", marginBottom: "-15px" }}
+              style={{ marginTop: "-15px", marginBottom: "-20px" }}
             >
               <label style={{ fontSize: "14px", margin: 0 }}>Gender:</label>
               <label className="radio-inline">
