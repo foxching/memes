@@ -5,7 +5,7 @@ import ProjectListFilter from "./design/ProjectListFilter";
 class Designs extends Component {
   render() {
     return (
-      <div className="container py-3">
+      <div className="container py-4">
         <div className="card card-body">
           <ProjectListFilter />
           <ProjectList />
