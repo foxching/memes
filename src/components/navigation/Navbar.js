@@ -9,9 +9,7 @@ class Navbar extends Component {
     return (
       <div className="navbar navbar-expand-lg navbar-light bg-primary">
         <div className="container">
-          <div className="navbar-brand text-white">
-            MEME'S SHIRT
-          </div>
+          <div className="navbar-brand text-white">MEME'S SHIRT</div>
           <button
             type="button"
             className="navbar-toggler"
@@ -48,8 +46,8 @@ class Navbar extends Component {
                   </li>
                 </React.Fragment>
               ) : (
-              <React.Fragment>
-                <li className="nav-item ">
+                <React.Fragment>
+                  <li className="nav-item ">
                     <NavLink to="/">
                       <i
                         className="fa fa-plus fa-sm nav-link"
@@ -60,39 +58,43 @@ class Navbar extends Component {
                       </i>{" "}
                     </NavLink>
                   </li>
-                <li className="nav-item dropdown">
-                  <div
-                    href="#"
-                    className="nav-link dropdown-toggle"
-                    id="navbardrop"
-                    data-toggle="dropdown"
-                  >
-                    <i
-                      className="fa fa-smile fa-lg"
-                      style={{ fontSize: "18px", color: "white" }}
+                  <li className="nav-item dropdown">
+                    <div
+                      href="#"
+                      className="nav-link dropdown-toggle"
+                      id="navbardrop"
+                      data-toggle="dropdown"
                     >
-                      {username}
-                    </i>
-                  </div>
-                  <div className="dropdown-menu">
-                    <NavLink className="dropdown-item" to="/my-design">
-                      My Design
-                    </NavLink>
-                    <NavLink className="dropdown-item" to="/settings">
-                      Settings
-                    </NavLink>
-                    <NavLink
-                      className="dropdown-item"
-                      to="/login"
-                      onClick={this.props.signOut}
-                    >
-                      Logout
-                    </NavLink>
-                  </div>
-                </li>
-              
-              </React.Fragment>
-               
+                      <i
+                        className="fa fa-smile fa-lg"
+                        style={{ fontSize: "18px", color: "white" }}
+                      >
+                        {username}
+                      </i>
+                    </div>
+                    <div className="dropdown-menu">
+                      <NavLink className="dropdown-item p-2" to="/my-design">
+                        <i className="fa fa-paint-brush"> My Design</i>
+                      </NavLink>
+                      <NavLink className="dropdown-item p-2" to="/settings">
+                        <i className="fa fa-cogs" aria-hidden="true">
+                          {" "}
+                          Settings
+                        </i>
+                      </NavLink>
+                      <NavLink
+                        className="dropdown-item p-2"
+                        to="/login"
+                        onClick={this.props.signOut}
+                      >
+                        <i className="fa fa-power-off" aria-hidden="true">
+                          {" "}
+                          Logout
+                        </i>
+                      </NavLink>
+                    </div>
+                  </li>
+                </React.Fragment>
               )}
             </ul>
           </div>
