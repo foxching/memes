@@ -31,23 +31,17 @@ const AboutPage = () => {
             </label>
           </div>
         </div>
-        <div class="form-group">
+        <div className="form-group">
           <label for="exampleFormControlTextarea1">
             Tell us about yourself
           </label>
-          <textarea
-            class="form-control"
-            id="exampleFormControlTextarea1"
-            rows="5"
-            placeholder="About Me"
-          />
+          <textarea className="form-control" rows="5" placeholder="About Me" />
         </div>
         <div className="row">
           <div className="form-group col-md-6 ">
             <input
               type="text"
               className="form-control"
-              id="formGroupExampleInput"
               placeholder="Occupation"
             />
           </div>
@@ -57,7 +51,6 @@ const AboutPage = () => {
             <input
               type="text"
               className="form-control"
-              id="formGroupExampleInput"
               placeholder="Country of Origin"
             />
           </div>

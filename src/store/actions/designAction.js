@@ -21,7 +21,7 @@ export const createDesign = design => {
       .collection("designs")
       .add({
         ...design,
-        authorName: profile.username,
+        authorName: profile.displayName,
         authorId: authId,
         createdAt: new Date()
       })

@@ -5,7 +5,7 @@ import { signOut } from "../../store/actions/authAction";
 
 class Navbar extends Component {
   render() {
-    const { isAuthenticated, username } = this.props;
+    const { isAuthenticated, displayName } = this.props;
     return (
       <div className="navbar navbar-expand-lg navbar-light bg-primary">
         <div className="container">
@@ -69,7 +69,7 @@ class Navbar extends Component {
                         className="fa fa-smile fa-lg"
                         style={{ fontSize: "18px", color: "white" }}
                       >
-                        {username}
+                        {displayName}
                       </i>
                     </div>
                     <div className="dropdown-menu">
@@ -105,7 +105,7 @@ class Navbar extends Component {
 }
 const mapStateToProps = state => ({
   isAuthenticated: !!state.firebase.auth.uid,
-  username: state.firebase.profile.username
+  displayName: state.firebase.profile.displayName
 });
 
 const mapDispatch = {

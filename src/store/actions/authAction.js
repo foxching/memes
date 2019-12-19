@@ -14,7 +14,7 @@ export const signUp = newUser => {
           .collection("users")
           .doc(res.user.uid)
           .set({
-            username: newUser.username,
+            displayName: newUser.username,
             createdAt: firestore.FieldValue.serverTimestamp()
           });
       })
