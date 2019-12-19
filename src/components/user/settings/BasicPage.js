@@ -1,70 +1,70 @@
 import React, { Component } from "react";
-import DatePicker from "react-datepicker";
-import "react-datepicker/dist/react-datepicker.css";
+import moment from "moment";
+import { connect } from "react-redux";
+import { reduxForm, Field } from "redux-form";
+import TextInput from "../../../common/form/TextInput";
+import RadioInput from "../../../common/form/RadioInput";
+import RenderDatePicker from "../../../common/form/DateInput";
 
 class BasicPage extends Component {
-  state = {
-    startDate: ""
-  };
-
-  handleChange = date => {
-    this.setState({
-      startDate: date
-    });
-  };
-
   render() {
     return (
       <div className="card card-body">
         <h3>Basics</h3>
         <hr className="divider" />
         <form>
-          <div className="row">
-            <div className="form-group col-md-6 ">
-              <input
-                type="text"
-                className="form-control"
-                id="formGroupExampleInput"
-                placeholder="Known as"
-              />
-            </div>
-          </div>
+          <Field
+            width={6}
+            name="displayName"
+            type="text"
+            component={TextInput}
+            placeholder="Known As"
+          />
           <div className="row">
             <div
-              className="form-group col-md-6"
+              className="form-group col-md-8"
               style={{ marginTop: "-15px", marginBottom: "-20px" }}
             >
               <label style={{ fontSize: "14px", margin: 0 }}>Gender:</label>
-              <label className="radio-inline">
-                <input type="radio" name="optradio" checked />
-                Male
-              </label>
-              <label className="radio-inline">
-                <input type="radio" name="optradio" />
-                Female
-              </label>
-            </div>
-          </div>
-          <div className="row">
-            <DatePicker
-              selected={this.state.startDate}
-              onChange={this.handleChange}
-              className="datepicker"
-              placeholderText="Birth Date"
-            />
-          </div>
-
-          <div className="row">
-            <div className="form-group col-md-12 ">
-              <input
-                type="text"
-                className="form-control"
-                id="formGroupExampleInput"
-                placeholder="Home Address"
+              <Field
+                type="radio"
+                name="gender"
+                props={{ value: "male" }}
+                label="Male"
+                component={RadioInput}
+              />
+              <Field
+                type="radio"
+                name="gender"
+                props={{ value: "female" }}
+                label="Female"
+                component={RadioInput}
               />
             </div>
           </div>
 
+          <Field
+            name="birthday"
+            dateFormat="L"
+            dateFormatCalendar="dddd"
+            showMonthDropdown
+            showYearDropdown
+            dropdownMode="select"
+            normalize={value =>
+              value ? moment(value).format("YYYY-MM-DD") : null
+            }
+            component={RenderDatePicker}
+            placeholder="Birth Date"
+            maxDate={moment()}
+          />
+
+          <Field
+            width={12}
+            name="address"
+            type="text"
+            component={TextInput}
+            placeholder="Home Adress"
+          />
           <hr className="divider" />
           <button type="submit" className="btn btn-success disabled ">
             Update Profile
@@ -75,4 +75,4 @@ class BasicPage extends Component {
   }
 }
 
-export default BasicPage;
+export default connect()(reduxForm({ form: "basicForm" })(BasicPage));
