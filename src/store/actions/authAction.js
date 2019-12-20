@@ -1,3 +1,6 @@
+import { SubmissionError, reset } from "redux-form";
+import { toastr } from "react-redux-toastr";
+
 export const signUp = newUser => {
   return (dispatch, getState, { getFirebase, getFirestore }) => {
     const firestore = getFirestore();
@@ -68,5 +71,21 @@ export const signOut = () => {
       .catch(err => {
         dispatch({ type: "SIGNOUT_ERROR", err });
       });
+  };
+};
+
+export const updatePassword = creds => {
+  return async (dispatch, getState, { getFirebase }) => {
+    const firebase = getFirebase();
+    const user = firebase.auth().currentUser;
+    try {
+      await user.updatePassword(creds.newPassword1);
+      await dispatch(reset("account"));
+      toastr.success("Success", "Password has been updated!");
+    } catch (error) {
+      throw new SubmissionError({
+        _error: error.message
+      });
+    }
   };
 };

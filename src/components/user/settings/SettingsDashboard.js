@@ -6,8 +6,9 @@ import BasicPage from "./BasicPage";
 import AboutPage from "./AboutPage";
 import AccountPage from "./AccountPage";
 import { updateProfile } from "../../../store/actions/userAction";
+import { updatePassword } from "../../../store/actions/authAction";
 
-const SettingsDashboard = ({ user, updateProfile }) => {
+const SettingsDashboard = ({ user, updateProfile, updatePassword }) => {
   return (
     <div className="container py-4">
       <div className="row">
@@ -26,7 +27,10 @@ const SettingsDashboard = ({ user, updateProfile }) => {
                 <AboutPage updateProfile={updateProfile} initialValues={user} />
               )}
             />
-            <Route path="/settings/account" render={() => <AccountPage />} />
+            <Route
+              path="/settings/account"
+              render={() => <AccountPage updatePassword={updatePassword} />}
+            />
           </Switch>
         </div>
         <div className="col col-md-3">
@@ -44,7 +48,7 @@ const mapState = state => {
   };
 };
 const actions = {
-  // updatePassword,
+  updatePassword,
   updateProfile
 };
 

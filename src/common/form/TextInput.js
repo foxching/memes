@@ -18,7 +18,7 @@ const TextInput = ({
           {...custom}
           placeholder={placeholder}
         />
-        {touched && error && <small>{error}</small>}
+        {touched && error && <small className="text-danger">{error}</small>}
       </div>
     </div>
   );
