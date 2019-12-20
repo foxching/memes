@@ -1,6 +1,16 @@
 import React from "react";
+import { Field, reduxForm } from "redux-form";
+import RadioInput from "../../../common/form/RadioInput";
+import TextInput from "../../../common/form/TextInput";
+import Textarea from "../../../common/form/Textarea";
 
-const AboutPage = () => {
+const AboutPage = ({
+  pristine,
+  submitting,
+  invalid,
+  handleSubmit,
+  updateProfile
+}) => {
   return (
     <div className="card card-body">
       <h3>About Me</h3>
@@ -8,7 +18,7 @@ const AboutPage = () => {
       <span className="text-left">
         Complete your profile to get the most out of this site
       </span>
-      <form>
+      <form onSubmit={handleSubmit(updateProfile)}>
         <div className="row">
           <div
             className="form-group col-md-8"
@@ -17,46 +27,57 @@ const AboutPage = () => {
             <label style={{ fontSize: "12px", fontWeight: "bold", margin: 0 }}>
               Tell us your status:
             </label>
-            <label className="radio-inline">
-              <input type="radio" name="optradio" checked />
-              Single
-            </label>
-            <label className="radio-inline">
-              <input type="radio" name="optradio" />
-              Relationship
-            </label>
-            <label className="radio-inline">
-              <input type="radio" name="optradio" />
-              Married
-            </label>
-          </div>
-        </div>
-        <div className="form-group">
-          <label for="exampleFormControlTextarea1">
-            Tell us about yourself
-          </label>
-          <textarea className="form-control" rows="5" placeholder="About Me" />
-        </div>
-        <div className="row">
-          <div className="form-group col-md-6 ">
-            <input
-              type="text"
-              className="form-control"
-              placeholder="Occupation"
+            <Field
+              type="radio"
+              name="status"
+              value="single"
+              label="Single"
+              component={RadioInput}
+            />
+
+            <Field
+              type="radio"
+              name="status"
+              value="relationship"
+              label="Relationship"
+              component={RadioInput}
+            />
+            <Field
+              type="radio"
+              name="status"
+              value="married"
+              label="Married"
+              component={RadioInput}
             />
           </div>
         </div>
-        <div className="row">
-          <div className="form-group col-md-12 ">
-            <input
-              type="text"
-              className="form-control"
-              placeholder="Country of Origin"
-            />
-          </div>
-        </div>
+        <Field
+          name="about"
+          type="textarea"
+          placeholder="About Me"
+          rows="6"
+          component={Textarea}
+        />
+        <Field
+          name="occupation"
+          width={6}
+          type="text"
+          component={TextInput}
+          placeholder="Occupation"
+        />
+        <Field
+          name="country"
+          width={12}
+          type="text"
+          component={TextInput}
+          placeholder="Country of Origin"
+        />
         <hr className="divider" />
-        <button type="submit" className="btn btn-success disabled ">
+        <button
+          type="submit"
+          className="btn btn-success"
+          disabled={invalid || submitting || pristine}
+        >
           Update Profile
         </button>
       </form>
@@ -64,4 +85,8 @@ const AboutPage = () => {
   );
 };
 
-export default AboutPage;
+export default reduxForm({
+  form: "userProfile",
+  enableReinitialize: true,
+  destroyOnUnmount: false
+})(AboutPage);

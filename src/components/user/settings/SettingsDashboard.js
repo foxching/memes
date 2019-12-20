@@ -20,7 +20,12 @@ const SettingsDashboard = ({ user, updateProfile }) => {
                 <BasicPage updateProfile={updateProfile} initialValues={user} />
               )}
             />
-            <Route path="/settings/about" render={() => <AboutPage />} />
+            <Route
+              path="/settings/about"
+              render={() => (
+                <AboutPage updateProfile={updateProfile} initialValues={user} />
+              )}
+            />
             <Route path="/settings/account" render={() => <AccountPage />} />
           </Switch>
         </div>
