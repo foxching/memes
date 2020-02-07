@@ -1,4 +1,5 @@
 import React from "react";
+import { Helmet } from "react-helmet";
 import { connect } from "react-redux";
 import { Switch, Route, Redirect } from "react-router-dom";
 import SettingsNav from "./SettingsNav";
@@ -11,6 +12,10 @@ import { updatePassword } from "../../../store/actions/authAction";
 const SettingsDashboard = ({ user, updateProfile, updatePassword }) => {
   return (
     <div className="container py-4">
+      <Helmet>
+        <title>Settings - Basic</title>
+        <meta name="description" content="Settings" />
+      </Helmet>
       <div className="row">
         <div className="col col-md-9">
           <Switch>

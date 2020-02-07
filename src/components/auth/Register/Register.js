@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Helmet } from "react-helmet";
 import { connect } from "react-redux";
 import {
   faPencilAlt,
@@ -27,14 +28,18 @@ class Register extends Component {
   onChangeHandle = e => {
     this.setState({ [e.target.name]: e.target.value });
   };
- 
- cancelSignUp = () => {
-   this.props.history.goBack()
- }
+
+  cancelSignUp = () => {
+    this.props.history.goBack();
+  };
   render() {
     const { authError } = this.props;
     return (
       <section className="container">
+        <Helmet>
+          <title>Register</title>
+          <meta name="description" content="Login" />
+        </Helmet>
         <section className="row ">
           <section className="col-md-7 ">
             <h1 className="text-left">SIGN UP NOW</h1>
@@ -130,7 +135,7 @@ class Register extends Component {
               <button type="submit" className="btn btn-primary ">
                 Submit
               </button>
-              <button  onClick={this.cancelSignUp} className="btn btn-warning ">
+              <button onClick={this.cancelSignUp} className="btn btn-warning ">
                 Cancel
               </button>
 

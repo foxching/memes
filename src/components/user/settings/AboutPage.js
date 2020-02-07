@@ -1,4 +1,5 @@
 import React from "react";
+import { Helmet } from "react-helmet";
 import { Field, reduxForm } from "redux-form";
 import RadioInput from "../../../common/form/RadioInput";
 import TextInput from "../../../common/form/TextInput";
@@ -13,6 +14,10 @@ const AboutPage = ({
 }) => {
   return (
     <div className="card card-body">
+      <Helmet>
+        <title>Settings - About</title>
+        <meta name="description" content="Settings - About" />
+      </Helmet>
       <h3>About Me</h3>
       <hr className="divider" />
       <span className="text-left">

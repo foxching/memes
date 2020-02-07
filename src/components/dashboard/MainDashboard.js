@@ -1,4 +1,5 @@
 import React from "react";
+import { Helmet } from "react-helmet";
 import { firestoreConnect } from "react-redux-firebase";
 import { connect } from "react-redux";
 import { compose } from "redux";
@@ -96,6 +97,12 @@ class MainDashboard extends React.Component {
     if (loading) return <Loader inverted={true} />;
     return (
       <div>
+        <Helmet>
+          <title>
+            {this.props.match.params.id ? "Edit Design" : "Home - Create New"}
+          </title>
+          <meta name="description" content="Main Dashboard" />
+        </Helmet>
         <div className="container py-4">
           <div className="card card-body">
             <div className="row">

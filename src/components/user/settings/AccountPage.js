@@ -1,4 +1,5 @@
 import React from "react";
+import { Helmet } from "react-helmet";
 import { Field, reduxForm } from "redux-form";
 import {
   combineValidators,
@@ -25,6 +26,10 @@ const AccountPage = ({
 }) => {
   return (
     <div className="card card-body">
+      <Helmet>
+        <title>Settings - Change Password</title>
+        <meta name="description" content="Settings - Change Password" />
+      </Helmet>
       <h3>Account</h3>
       <hr className="divider" />
       <span className="text-uppercase text-info">Change Password</span>

@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Redirect } from "react-router-dom";
+import { Helmet } from "react-helmet";
 import { signIn } from "../../../store/actions/authAction";
 import "./Login.css";
 
@@ -34,6 +35,10 @@ class Login extends Component {
 
     return (
       <section className="container-fluid">
+        <Helmet>
+          <title>Login</title>
+          <meta name="description" content="Login" />
+        </Helmet>
         <section className="row justify-content-center">
           <section className="col-12 col-sm-6 col-md-3">
             <form onSubmit={this.onHandleSubmit} className="form-container">

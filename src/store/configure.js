@@ -10,7 +10,8 @@ const rrfConfig = {
   userProfile: "users",
   useFirestoreForProfile: true, // Firestore for Profile instead of Realtime DB
   attachAuthIsReady: true, // attaches auth is ready promise to store
-  updateProfileOnLogin: false
+  updateProfileOnLogin: false,
+  logErrors: false
 };
 
 const configureStore = preloadedState => {
