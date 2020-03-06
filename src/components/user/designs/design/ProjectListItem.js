@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
+import Tippy from "@tippy.js/react";
+import "tippy.js/dist/tippy.css";
 import { deleteDesign } from "../../../../store/actions/designAction";
 import Modal from "../../../modal/Modal";
 import "./ProjectList.css";
@@ -59,17 +61,23 @@ class ProjectListItem extends Component {
             <p>{design.name}</p>
             {/* //<button className="btn btn-primary btn-sm">View</button> */}
             <div className="actionButton">
-              <span>
-                <i className="fa fa-info-circle fa-lg" />
-              </span>
-              <span>
-                <Link to={`/design/${design.id}`}>
-                  <i className="fa fa-edit fa-lg" />
-                </Link>
-              </span>
-              <span onClick={() => this.handleShow(design.id)}>
-                <i className="fa fa-trash fa-lg" />
-              </span>
+              <Tippy content="Info">
+                <span>
+                  <i className="fa fa-info-circle fa-lg" />
+                </span>
+              </Tippy>
+              <Tippy content="Edit">
+                <span>
+                  <Link to={`/design/${design.id}`}>
+                    <i className="fa fa-edit fa-lg" />
+                  </Link>
+                </span>
+              </Tippy>
+              <Tippy content="Delete">
+                <span onClick={() => this.handleShow(design.id)}>
+                  <i className="fa fa-trash fa-lg" />
+                </span>
+              </Tippy>
             </div>
           </div>
         </div>
